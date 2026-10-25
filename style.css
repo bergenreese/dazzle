@@ -845,3 +845,24 @@ header{gap:16px}
   .prints,.book{grid-template-columns:1fr;gap:18px;padding:34px 8%}
   .prints h2,.book h2{font-size:48px}
 }
+
+/* Bri's notes: one-line name, text nav, typewriter info box, matching arrows */
+.wordmark{white-space:nowrap}
+.top-actions{gap:10px;flex-wrap:nowrap}
+.top-link{font-family:'Special Elite',monospace;font-size:13px;font-weight:400;letter-spacing:0;white-space:nowrap}
+.top-actions .dot{color:var(--red);font-size:14px;font-variant-emoji:text}
+.venmo-btn{display:none}
+.hero-info,.hero-info .hi-label,.hero-info strong,.hero-info span{font-family:'Special Elite',monospace!important;text-transform:none}
+.hero-info .hi-label{font-size:12px;letter-spacing:1px;opacity:.85}
+.hero-info strong{font-size:26px;font-weight:400;letter-spacing:0;text-transform:uppercase}
+.cta-bar a span{font-family:var(--sans);font-variant-emoji:text}
+@media(max-width:750px){
+  header{flex-wrap:nowrap}
+  .wordmark{font-size:17px}
+  .wordmark span{font-size:18px;padding-left:4px}
+  .top-actions{gap:5px}
+  .top-link{font-size:10px}
+  .top-actions .dot{font-size:10px}
+  .hero-info strong{font-size:17px}
+  .hero-info .hi-label{font-size:9px}
+}
