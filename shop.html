@@ -76,7 +76,9 @@
   </footer>
   <script>
     // Placeholder slots until Brianna sends the print photos. Add {title, img} entries to fill them in.
-    const prints = Array.from({length: 20}, (_, i) => { const n = String(i + 1).padStart(2, '0'); return { title: `No. ${n}`, img: `print-${n}.webp` }; });
+    // Ordered strongest first; titles number by position
+    const ORDER = [20,14,13,11,3,6,10,2,5,15,16,18,19,9,4,8,1,7,17,12];
+    const prints = ORDER.map((f, i) => ({ title: `No. ${String(i + 1).padStart(2, '0')}`, img: `print-${String(f).padStart(2, '0')}.webp` }));
     // Add print numbers here when a framed piece sells, e.g. ['03','11']
     const SOLD_FRAMED = [];
     const prices = { '4x6': 5, '5x7': 8, 'framed': 30 };
