@@ -1,7 +1,7 @@
 const dialog = document.querySelector('dialog');
 const image = dialog.querySelector('img');
 const label = dialog.querySelector('p');
-const names = ['Under the moon', 'Red sequins', 'Red beret'];
+const names = ['Second serving', 'Red sequins', 'Day job'];
 
 let current = 1;
 let last;
