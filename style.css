@@ -1077,3 +1077,18 @@ html{scroll-behavior:smooth}
 body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;background:url(paper.jpg) center/cover;mix-blend-mode:multiply;opacity:.16}
 body::before{content:"";position:fixed;inset:0;z-index:89;pointer-events:none;background:url(paper.jpg) center/cover;mix-blend-mode:soft-light;opacity:.4}
 .hero::before{opacity:.28;mix-blend-mode:soft-light;background-size:140% auto}
+
+/* ---- perf: cheap texture (no blend modes, single GPU layer) ---- */
+body::after{display:none}
+body::before{background:url(paper-tex.webp) center/cover;mix-blend-mode:normal;opacity:.55;transform:translateZ(0);will-change:transform}
+.hero::before{background:url(paper-tex.webp) center/cover;mix-blend-mode:normal;opacity:.45}
+.env-back::after,.env-flap::before,.env-letter::before{background-image:url(paper-tex.webp);mix-blend-mode:normal;opacity:.5}
+body::before{opacity:.6}.hero::before{opacity:.5}
+body::before{opacity:.2}.hero::before{opacity:.12}.env-back::after,.env-flap::before,.env-letter::before{opacity:.15}
+
+/* ---- texture v3: baked into section backgrounds (scrolls with content, no overlay layers) ---- */
+body::before,body::after,.hero::before{display:none!important}
+header,main>section,footer,.cta-bar{background-image:url(paper-soft.jpg)!important;background-size:1000px auto!important;background-repeat:repeat!important;background-blend-mode:multiply!important}
+.env-back::after,.env-flap::before,.env-letter::before{background:url(paper-soft.jpg) center/cover;mix-blend-mode:multiply;opacity:.6}
+header,.gallery,.prints,.visit,footer{background-color:#efe2c8!important}
+header,main>section,footer,.cta-bar{background-size:cover!important;background-repeat:no-repeat!important;background-position:center!important}
