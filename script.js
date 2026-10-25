@@ -65,3 +65,17 @@ bookForm?.addEventListener('submit', async e => {
     btn.disabled = false; btn.textContent = 'SEND REQUEST';
   }
 });
+
+// letters fall apart on hover
+if (matchMedia('(hover:hover)').matches) {
+  document.querySelectorAll('#title, .playing-card h3, .manifesto h2 > span').forEach(el => {
+    el.classList.add('split');
+    el.innerHTML = [...el.textContent].map(c => `<span>${c === ' ' ? '&nbsp;' : c}</span>`).join('');
+    const kids = [...el.children];
+    el.addEventListener('mouseenter', () => kids.forEach(s => {
+      const r = () => Math.random() * 2 - 1;
+      s.style.transform = `translate(${r()*8}px,${r()*12}px) rotate(${r()*14}deg)`;
+    }));
+    el.addEventListener('mouseleave', () => kids.forEach(s => s.style.transform = ''));
+  });
+}

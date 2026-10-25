@@ -954,3 +954,28 @@ header{gap:16px}
 @media(max-width:750px){.hero-portrait{height:84%!important;width:150%!important;left:-25%!important;bottom:-3%!important}}
 @media(max-width:750px){.hero-portrait{top:calc(64px + 27vw)!important;bottom:auto!important;height:auto!important;width:140%!important;left:-20%!important;object-position:top}}
 @media(max-width:750px){.hero-portrait{height:calc(100% - 64px - 27vw + 30px)!important;width:auto!important;max-width:none!important;left:50%!important;transform:translateX(-50%) rotate(-3deg)!important;object-fit:contain}}
+
+/* ---- hover play ---- */
+@media (hover:hover){
+.photo .frame{overflow:hidden}
+.photo img,.photo .frame{transition:transform .5s cubic-bezier(.2,.8,.2,1),filter .5s}
+.photo:hover img{transform:scale(1.06)}
+.photo.one:hover .frame{transform:rotate(-1.5deg) translateY(-6px)}
+.photo.two:hover .frame{transform:rotate(1.5deg) translateY(-6px)}
+.photo.three:hover .frame{transform:rotate(-1deg) translateY(-6px)}
+.photo:hover .caption .ico{transform:translate(3px,-3px)}
+.ico{transition:transform .3s}
+.button,.top-link,.cta-bar a,.closing a,footer a{transition:transform .3s,letter-spacing .3s,opacity .3s}
+.button:hover{transform:translateY(-2px) scale(1.03);letter-spacing:.14em}
+.cta-bar a:hover,.top-link:hover,footer a:hover{letter-spacing:.12em}
+.cta-bar a:hover .ico{transform:translateY(3px)}
+footer a:hover .ico{transform:translateY(-3px)}
+.closing a:hover{transform:scale(1.04)}
+.closing a:hover .ico{transform:translate(4px,-4px)}
+.playing-card{transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.playing-card:hover{transform:rotate(0deg) scale(1.04)}
+.hero-portrait{transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.hero:hover .hero-portrait{transform:scale(1.02)}
+.split span{display:inline-block;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.manifesto h2{cursor:default}
+}
