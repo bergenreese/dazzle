@@ -5,28 +5,19 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Dazzle. Photographs by Brianna Rae. November at Wild Tulips, Denver.">
   <title>Dazzle — Brianna Rae</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600&family=Special+Elite&family=Caveat:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@1,600&family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600&family=Special+Elite&family=Caveat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body class="gated">
   <div class="envelope-gate" id="gate">
-    <button class="env" id="envBtn" aria-label="Open the invitation">
+    <div class="env" id="envBtn" role="button" tabindex="0" aria-label="Open the invitation">
       <span class="env-back"></span>
-      <span class="env-letter"><small>You're invited</small><b>DAZZLE</b><small>Brianna Rae · All November</small></span>
+      <span class="env-letter"><small>You're invited</small><b>DAZZLE</b><small>Opening night · November 1</small><a class="env-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=DAZZLE%20%E2%80%94%20Opening%20Night&dates=20261101/20261102&details=A%20photo%20gallery%20by%20Brianna%20Rae.%20bergenreese.github.io/dazzle&location=Wild%20Tulips%2C%201209%20E%2013th%20Ave%2C%20Denver%2C%20CO%2080218" target="_blank" rel="noopener">Add to calendar</a></span>
       <span class="env-front"></span>
       <span class="env-flap"></span>
-      <span class="env-stitch"><svg class="seal-svg" viewBox="0 0 100 100" aria-hidden="true"><defs>
-<radialGradient id="wx" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#6b2a35"/><stop offset=".55" stop-color="#4a1622"/><stop offset="1" stop-color="#2c0b14"/></radialGradient>
-<radialGradient id="wi" cx="60%" cy="65%" r="70%"><stop offset="0" stop-color="#3d111b"/><stop offset="1" stop-color="#5a1e2a"/></radialGradient>
-<filter id="emb"><feDropShadow dx="-.6" dy="-.6" stdDeviation=".4" flood-color="#000" flood-opacity=".55"/><feDropShadow dx=".6" dy=".7" stdDeviation=".3" flood-color="#c78a8f" flood-opacity=".45"/></filter></defs>
-<polygon points="98.1,50.0 93.9,55.8 95.2,62.1 90.5,66.8 90.0,73.1 86.0,77.6 81.0,81.0 79.9,88.9 71.8,87.8 67.5,92.2 61.3,92.4 55.7,93.6 50.0,95.6 43.8,97.2 37.8,95.5 32.9,91.2 26.7,90.4 20.6,88.3 17.2,82.8 13.9,77.7 8.1,74.2 6.8,67.9 3.8,62.4 5.4,55.9 5.8,50.0 6.3,44.2 6.5,38.3 6.0,31.8 8.9,26.3 13.2,21.7 17.0,17.0 22.4,14.0 26.9,10.0 33.2,9.5 38.7,7.7 43.8,2.9 50.0,3.1 56.0,4.8 61.7,6.5 67.8,7.1 72.9,10.4 77.4,14.3 85.7,14.3 87.3,21.4 88.7,27.6 92.8,32.3 94.6,38.1 97.5,43.8" fill="url(#wx)" stroke="#2a0a12" stroke-width=".6" stroke-linejoin="round"/>
-<circle cx="50" cy="50" r="33" fill="url(#wi)"/>
-<circle cx="50" cy="50" r="33" fill="none" stroke="#7d3743" stroke-width=".8" filter="url(#emb)"/>
-<circle cx="50" cy="50" r="29.5" fill="none" stroke="#7d3743" stroke-width=".4" stroke-dasharray="1 1.6" filter="url(#emb)"/>
-<text x="50" y="58" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-size="30" fill="#6e2733" filter="url(#emb)">B<tspan dx="-3" dy="2" font-size="25">R</tspan></text>
-<ellipse cx="36" cy="30" rx="9" ry="4" fill="#fff" opacity=".12" transform="rotate(-30 36 30)"/></svg></span>
+      <span class="env-stitch"><span class="seal-b">B</span></span>
       <span class="env-hint">Tap to open</span>
-    </button>
+    </div>
   </div>
   <header>
     <a class="wordmark" href="#">brianna rae<span>✳︎</span></a>
@@ -50,7 +41,7 @@
       >
       <div class="hero-info">
         <span class="hi-label">GALLERY OPEN</span>
-        <strong>All November</strong>
+        <strong>Opens Nov 1</strong>
         <span>Framed prints</span>
         <span>1209 E 13th Ave, Denver</span>
       </div>
@@ -65,13 +56,38 @@
     <section class="gallery" id="photographs">
       <div class="section-heading">
         <p class="eyebrow">01 / THE GALLERY</p>
-        <p class="typewriter">the full collection.</p>
+        <p class="typewriter">a preview.</p>
       </div>
 
-      <div class="masonry"><a class="m-item" href="shop.html#p01"><img src="print-01.webp" alt="Photograph No. 01" loading="lazy"><span>No. 01 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p02"><img src="print-02.webp" alt="Photograph No. 02" loading="lazy"><span>No. 02 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p03"><img src="print-03.webp" alt="Photograph No. 03" loading="lazy"><span>No. 03 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p04"><img src="print-04.webp" alt="Photograph No. 04" loading="lazy"><span>No. 04 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p05"><img src="print-05.webp" alt="Photograph No. 05" loading="lazy"><span>No. 05 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p06"><img src="print-06.webp" alt="Photograph No. 06" loading="lazy"><span>No. 06 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p07"><img src="print-07.webp" alt="Photograph No. 07" loading="lazy"><span>No. 07 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p08"><img src="print-08.webp" alt="Photograph No. 08" loading="lazy"><span>No. 08 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p09"><img src="print-09.webp" alt="Photograph No. 09" loading="lazy"><span>No. 09 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p10"><img src="print-10.webp" alt="Photograph No. 10" loading="lazy"><span>No. 10 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p11"><img src="print-11.webp" alt="Photograph No. 11" loading="lazy"><span>No. 11 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p12"><img src="print-12.webp" alt="Photograph No. 12" loading="lazy"><span>No. 12 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p13"><img src="print-13.webp" alt="Photograph No. 13" loading="lazy"><span>No. 13 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p14"><img src="print-14.webp" alt="Photograph No. 14" loading="lazy"><span>No. 14 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p15"><img src="print-15.webp" alt="Photograph No. 15" loading="lazy"><span>No. 15 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p16"><img src="print-16.webp" alt="Photograph No. 16" loading="lazy"><span>No. 16 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p17"><img src="print-17.webp" alt="Photograph No. 17" loading="lazy"><span>No. 17 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p18"><img src="print-18.webp" alt="Photograph No. 18" loading="lazy"><span>No. 18 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p19"><img src="print-19.webp" alt="Photograph No. 19" loading="lazy"><span>No. 19 <em>Own it →</em></span></a><a class="m-item" href="shop.html#p20"><img src="print-20.webp" alt="Photograph No. 20" loading="lazy"><span>No. 20 <em>Own it →</em></span></a></div>
-      <p class="gallery-note">Every photograph is available as a print.<span>Tap one to take it home.</span></p>
+      <div class="photo-grid">
+        <button class="photo one" data-photo="1" aria-label="View Under the moon enlarged">
+          <span class="frame"><img src="photo-1.webp" alt="Under the moon" loading="lazy"></span>
+          <span class="caption"><span>01 / Second serving</span><span><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></span></span>
+        </button>
+        <button class="photo two" data-photo="2" aria-label="View photograph 02 enlarged">
+          <span class="frame"><img src="photo-2.webp" alt="Photograph 02" loading="lazy"></span>
+          <span class="caption"><span>02</span><span><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></span></span>
+        </button>
+        <button class="photo three" data-photo="3" aria-label="View Red beret enlarged">
+          <span class="frame"><img src="photo-3.webp" alt="Red beret" loading="lazy"></span>
+          <span class="caption"><span>03 / Day job</span><span><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></span></span>
+        </button>
+      </div>
+      <p class="gallery-note">Come a little closer.<span>Tap a photograph to see it larger.</span></p>
+      <p class="see-all"><a href="shop.html">See the full collection →</a></p>
     </section>
 
+
+
+    <section class="bts reveal" aria-label="Behind the scenes">
+      <p class="eyebrow">BEFORE THE LIGHTS</p>
+      <div class="bts-strip">
+        <img src="print-04.webp" alt="Makeup before the show" loading="lazy">
+        <img src="print-08.webp" alt="Getting ready in the mirror" loading="lazy">
+        <img src="print-15.webp" alt="Final touches backstage" loading="lazy">
+        <img src="print-09.webp" alt="Waiting in the wings" loading="lazy">
+      </div>
+    </section>
 
     <section class="prints" id="prints">
       <div class="prints-head">
@@ -97,13 +113,14 @@
         <p class="eyebrow">03 / VISIT</p>
         <h2>Come see it<br><em>in person.</em></h2>
         <a class="button directions" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=1209+E+13th+Ave+Denver+CO+80218">GET DIRECTIONS</a>
+        <p class="cal-links">Opening night · Sunday, November 1<br><a target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=DAZZLE%20%E2%80%94%20Opening%20Night&dates=20261101/20261102&details=A%20photo%20gallery%20by%20Brianna%20Rae.%20bergenreese.github.io/dazzle&location=Wild%20Tulips%2C%201209%20E%2013th%20Ave%2C%20Denver%2C%20CO%2080218">Google Calendar</a> · <a href="dazzle.ics" download>Apple / Outlook</a></p>
       </div>
       <div class="playing-card">
         <span class="corner">A<br>♥︎</span>
         <span class="heart" aria-hidden="true">♥︎</span>
         <p class="invite">You're invited to the gallery.</p>
         <h3>DAZZLE</h3>
-        <p class="when">ALL NOVEMBER</p>
+        <p class="when">OPENING NOV 1 · ALL NOVEMBER</p>
         <hr>
         <p class="venue">WILD TULIPS</p>
         <p class="address">1209 E 13th Ave<br>Denver, Colorado</p>
@@ -158,6 +175,6 @@
     </div>
   </dialog>
 
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>

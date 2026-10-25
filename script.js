@@ -82,7 +82,16 @@ if (matchMedia('(hover:hover)').matches) {
 
 // envelope intro
 const gate = document.getElementById('gate');
-document.getElementById('envBtn')?.addEventListener('click', () => {
+const envBtn = document.getElementById('envBtn');
+const openEnv = e => { if (e.target.closest('.env-cal')) return;
   gate.classList.add('open');
-  setTimeout(() => { document.body.classList.remove('gated'); gate.remove(); }, 1800);
-});
+  setTimeout(() => { document.body.classList.remove('gated'); gate.remove(); }, 2500);
+};
+envBtn?.addEventListener('click', openEnv);
+envBtn?.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEnv(e); } });
+
+// reveal on scroll
+const rv = document.querySelectorAll('main > section:not(.hero), .reveal');
+rv.forEach(el => el.classList.add('reveal'));
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px' });
+rv.forEach(el => io.observe(el));
