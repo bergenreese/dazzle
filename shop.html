@@ -69,7 +69,7 @@
     const prices = { '4x6': 5, '5x7': 8 };
     const grid = document.getElementById('grid');
     // Stripe Payment Links: paste Brianna's links here once she creates them.
-    const STRIPE = { '4x6': '', '5x7': '' };
+    const STRIPE = { '4x6': 'https://buy.stripe.com/dRmfZh00s0c31PRaiq08g00', '5x7': 'https://buy.stripe.com/4gMdR9aF6e2T8efaiq08g01' };
     const checkout = (title, size) => STRIPE[size] ? `${STRIPE[size]}?client_reference_id=${encodeURIComponent(title.replace(/\s+/g,'-'))}` : '';
     prints.forEach((p, i) => {
       const id = `s${i}`;
