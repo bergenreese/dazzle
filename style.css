@@ -1072,3 +1072,8 @@ html{scroll-behavior:smooth}
 .hero::before{z-index:5}
 .bts-strip img{width:min(320px,40%)}
 .bts-strip img:nth-child(odd){transform:none}.bts-strip img:nth-child(2){transform:translateY(22px)}
+
+/* ---- more texture (Bri) ---- */
+body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;background:url(paper.jpg) center/cover;mix-blend-mode:multiply;opacity:.16}
+body::before{content:"";position:fixed;inset:0;z-index:89;pointer-events:none;background:url(paper.jpg) center/cover;mix-blend-mode:soft-light;opacity:.4}
+.hero::before{opacity:.28;mix-blend-mode:soft-light;background-size:140% auto}
