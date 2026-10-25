@@ -899,3 +899,35 @@ header{gap:16px}
   .playing-card hr{margin:8px}
   .visit .directions{max-width:none}
 }
+
+/* round 4: Bri's card layout + font matching */
+/* green group = credit font (DM Sans caps) */
+.top-link{font-family:var(--sans)!important;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase}
+.hero-info span,.hero-info span:not(.hi-label){font-family:var(--sans)!important;font-size:11px!important;font-weight:600;letter-spacing:1.5px;text-transform:uppercase}
+/* yellow group = DAZZLE font */
+.hero-info .hi-label,.hero-info strong{font-family:var(--display)!important;font-weight:800!important;letter-spacing:.5px!important;text-transform:uppercase}
+.hero-info .hi-label{font-size:13px!important;opacity:.9}
+.hero-info strong{font-size:30px!important}
+/* visit: copy + small button left, big tilted card bleeding right */
+.visit{grid-template-columns:1fr 1fr!important;grid-template-areas:"copy card"!important;overflow:hidden;align-items:center}
+.visit .directions{display:inline-flex;margin-top:28px;max-width:none;padding:16px 26px}
+.visit .playing-card{transform:rotate(14deg)!important;width:min(340px,100%);margin:20px 0 20px auto}
+.playing-card .invite{font-family:var(--sans)!important;font-weight:400!important;font-size:15px!important;letter-spacing:2px!important;text-transform:none!important}
+.playing-card h3{font-family:var(--display)!important;font-weight:800}
+.playing-card .when,.playing-card .venue{font-family:var(--sans)!important;font-weight:400!important;letter-spacing:3px!important;font-size:13px!important}
+.playing-card .address{font-family:'Special Elite',monospace!important;font-weight:400!important;text-transform:none!important;letter-spacing:0!important;font-size:13px!important;text-decoration:underline dotted;text-underline-offset:4px}
+@media(max-width:750px){
+  .top-link{font-size:8.5px;letter-spacing:.8px}
+  .hero-info strong{font-size:20px!important}
+  .hero-info .hi-label{font-size:10px!important}
+  .hero-info span:not(.hi-label){font-size:8.5px!important;letter-spacing:1px}
+  .visit{grid-template-columns:1fr 1.05fr!important;padding:30px 0 30px 6%!important;gap:0 4px!important}
+  .visit h2{font-size:36px}
+  .visit .directions{margin-top:20px;padding:12px 14px;font-size:10px}
+  .visit .playing-card{width:118%;margin:10px -14% 10px 0;padding:26px 14px}
+  .playing-card .invite{font-size:10px!important;letter-spacing:1.5px!important}
+  .playing-card h3{font-size:30px}
+  .playing-card .when,.playing-card .venue{font-size:9.5px!important;letter-spacing:2px!important}
+  .playing-card .address{font-size:10px!important}
+}
+@media(max-width:750px){.visit .playing-card{width:104%;margin:10px -4% 10px 0;transform:rotate(11deg)!important}}
