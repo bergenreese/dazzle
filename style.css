@@ -932,3 +932,25 @@ header{gap:16px}
 }
 @media(max-width:750px){.visit .playing-card{width:104%;margin:10px -4% 10px 0;transform:rotate(11deg)!important}}
 .prints .sizes{font:700 18px var(--display);letter-spacing:2px;margin:14px 0 18px!important}
+
+/* round 5 */
+.prints{display:block}
+.prints-line{font-family:Georgia,serif;font-size:19px;line-height:1.4;margin:10px 0 22px}
+.button.make{display:inline-flex;max-width:none;padding:16px 28px}
+.visit-copy{align-self:start!important;padding-top:10px}
+/* mobile: hero fills the first screen, banner sits at the bottom like a toolbar */
+@media(max-width:750px){
+  .hero{height:calc(100svh - 52px - 58px)!important;min-height:520px}
+  .hero h1{font-size:34vw!important;margin-top:36px!important}
+  .hero-portrait{width:136%!important;left:-18%!important;height:74%!important;bottom:-2%!important}
+  .edition{font-size:9px}
+  .hero-info{padding:10px 12px!important}
+  .hero-info strong{font-size:24px!important}
+  .hero-info .hi-label{font-size:11px!important}
+  .hero-info span:not(.hi-label){font-size:10px!important}
+  .cta-bar a{padding:18px 4px;font-size:15px}
+  .prints-line{font-size:16px}
+}
+@media(max-width:750px){.hero-portrait{height:84%!important;width:150%!important;left:-25%!important;bottom:-3%!important}}
+@media(max-width:750px){.hero-portrait{top:calc(64px + 27vw)!important;bottom:auto!important;height:auto!important;width:140%!important;left:-20%!important;object-position:top}}
+@media(max-width:750px){.hero-portrait{height:calc(100% - 64px - 27vw + 30px)!important;width:auto!important;max-width:none!important;left:50%!important;transform:translateX(-50%) rotate(-3deg)!important;object-fit:contain}}
