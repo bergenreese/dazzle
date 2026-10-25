@@ -45,3 +45,12 @@ dialog.addEventListener('keydown', event => {
   if (event.key === 'ArrowRight') show(current + 1);
   if (event.key === 'ArrowLeft') show(current - 1);
 });
+
+const bookForm = document.getElementById('bookForm');
+bookForm?.addEventListener('submit', e => {
+  e.preventDefault();
+  const f = new FormData(bookForm);
+  const subject = `Shoot request: ${f.get('type')} — ${f.get('name')}`;
+  const body = `Name: ${f.get('name')}\nEmail: ${f.get('email')}\nType: ${f.get('type')}\n\n${f.get('message') || ''}`;
+  location.href = `mailto:briannaraephotography@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});

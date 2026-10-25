@@ -11,6 +11,10 @@
 <body>
   <header>
     <a class="wordmark" href="#">brianna rae<span>✳︎</span></a>
+    <div class="top-actions">
+      <a class="top-link" href="#book">Book a shoot</a>
+      <a class="venmo-btn" href="https://venmo.com/u/briannaraephotography" target="_blank" rel="noopener">Buy prints · Venmo ↗</a>
+    </div>
   </header>
 
   <main>
@@ -66,6 +70,25 @@
       </p>
     </section>
 
+
+    <section class="prints" id="prints">
+      <div class="prints-head">
+        <p class="eyebrow">02 / PRINTS</p>
+        <h2>Take one<br><em>home.</em></h2>
+      </div>
+      <div class="prints-body">
+        <p>Prints of every photograph in the gallery are available to order here.</p>
+        <p class="note">Buying an original from the wall? Pay at the bar at Wild Tulips.</p>
+        <ol class="steps">
+          <li>Pick a photograph from the gallery.</li>
+          <li>Pay with Venmo to <strong>@briannaraephotography</strong>.</li>
+          <li>Put the photograph's name and your email in the Venmo note.</li>
+        </ol>
+        <a class="button venmo-big" href="https://venmo.com/u/briannaraephotography" target="_blank" rel="noopener">PAY WITH VENMO <span>↗</span></a>
+        <p class="fine">Payment goes through Venmo's secure checkout. Brianna will email you to confirm size and shipping.</p>
+      </div>
+    </section>
+
     <section class="manifesto">
       <p class="eyebrow">A NOTE TO KEEP</p>
       <h2>
@@ -79,7 +102,7 @@
 
     <section class="visit" id="visit">
       <div class="visit-copy">
-        <p class="eyebrow">02 / VISIT</p>
+        <p class="eyebrow">03 / VISIT</p>
         <h2>Come see it<br><em>in person.</em></h2>
         <p>
           Find a photograph that stays with you.
@@ -99,6 +122,29 @@
         <p class="address">1209 E 13th Ave<br>Denver, Colorado</p>
         <span class="corner reverse">A<br>♥︎</span>
       </div>
+    </section>
+
+
+    <section class="book" id="book">
+      <div>
+        <p class="eyebrow">04 / BOOK A SHOOT</p>
+        <h2>Work with<br><em>Brianna.</em></h2>
+        <p>Portraits, performers, events. Tell her what you have in mind.</p>
+      </div>
+      <form class="book-form" id="bookForm">
+        <label for="bName">Name</label>
+        <input id="bName" name="name" required autocomplete="name">
+        <label for="bEmail">Email</label>
+        <input id="bEmail" name="email" type="email" required autocomplete="email">
+        <label for="bType">Type of shoot</label>
+        <select id="bType" name="type">
+          <option>Portrait</option><option>Performance / event</option><option>Something else</option>
+        </select>
+        <label for="bMsg">Details</label>
+        <textarea id="bMsg" name="message" rows="4" placeholder="Date, location, what you're picturing"></textarea>
+        <button class="button" type="submit">SEND REQUEST <span>↗</span></button>
+        <p class="fine">This opens your email app with the request filled in. Or email <a href="mailto:briannaraephotography@gmail.com">briannaraephotography@gmail.com</a> directly.</p>
+      </form>
     </section>
 
     <section class="closing">

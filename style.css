@@ -810,3 +810,38 @@ footer{padding:20px 5%}
 }
 @media(max-width:750px){.photo.three .frame img{aspect-ratio:4/3;object-position:center 30%}}
 @media(max-width:750px){.hero-info .hi-label{display:block!important;font-size:9px;margin-bottom:2px}}
+
+/* header actions */
+header{gap:16px}
+.top-actions{display:flex;align-items:center;gap:18px}
+.top-link{font-size:12px;font-weight:600;letter-spacing:.3px}
+.venmo-btn{background:#3d95ce;color:#fff;padding:10px 16px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.3px;white-space:nowrap}
+.venmo-btn:hover{background:#2f7fb3}
+
+/* prints */
+.prints{display:grid;grid-template-columns:1fr 1.3fr;gap:60px;padding:56px 12%;border-top:1px solid #29191925}
+.prints-body p{font-size:14px;line-height:1.7;margin:0 0 10px}
+.prints .note{font-family:'Special Elite',monospace;font-size:14px;color:var(--red)}
+.steps{margin:18px 0 22px;padding-left:20px;font-size:14px;line-height:1.9}
+.venmo-big{background:#3d95ce!important}
+.fine{font-size:11px!important;color:#665b51;margin-top:12px!important;line-height:1.6}
+
+/* booking */
+.book{display:grid;grid-template-columns:1fr 1.3fr;gap:60px;padding:56px 12%;background:#e6d6b6}
+.book>div>p:not(.eyebrow){font-size:14px;line-height:1.7;margin-top:18px}
+.book-form{display:grid;gap:6px}
+.book-form label{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-top:8px}
+.book-form input,.book-form select,.book-form textarea{font:inherit;font-size:15px;padding:11px 12px;border:1px solid #16172955;background:#f8efdc;color:var(--ink);border-radius:0}
+.book-form input:focus,.book-form select:focus,.book-form textarea:focus{outline:2px solid var(--red);outline-offset:1px}
+.book-form .button{border:0;cursor:pointer;margin-top:14px;font:inherit;font-size:11px;letter-spacing:1px}
+.book-form .fine a{text-decoration:underline}
+
+@media(max-width:750px){
+  header{padding:12px 5%}
+  .wordmark{font-size:20px}
+  .top-actions{gap:10px}
+  .top-link{font-size:10px}
+  .venmo-btn{padding:8px 11px;font-size:10px}
+  .prints,.book{grid-template-columns:1fr;gap:18px;padding:34px 8%}
+  .prints h2,.book h2{font-size:48px}
+}
