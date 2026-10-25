@@ -809,3 +809,4 @@ footer{padding:20px 5%}
   .closing{padding:22px 7%}
 }
 @media(max-width:750px){.photo.three .frame img{aspect-ratio:4/3;object-position:center 30%}}
+@media(max-width:750px){.hero-info .hi-label{display:block!important;font-size:9px;margin-bottom:2px}}
