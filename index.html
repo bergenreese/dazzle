@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Dazzle. Photographs by Brianna Rae. November at Wild Tulips, Denver.">
+  <title>Dazzle — Brianna Rae</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600&family=Special+Elite&family=Caveat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a class="wordmark" href="#">brianna rae<span>✳︎</span></a>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="title">
+      <div class="edition">
+        PHOTOGRAPHS BY BRIANNA RAE
+      </div>
+      <h1 id="title">DAZZLE</h1>
+      <img
+        class="hero-portrait"
+        src="photo-0.webp"
+        alt="Black and white portrait of a performer wearing a beret and hoop earrings, hands raised"
+      >
+      <div class="hero-info">
+        <span class="hi-label">ON VIEW</span>
+        <strong>All November</strong>
+        <span>Wild Tulips</span>
+        <span>1209 E 13th Ave, Denver</span>
+        <em>Prints for sale off the wall</em>
+      </div>
+    </section>
+
+    <nav class="ticker cta-bar" aria-label="Explore">
+      <a href="#photographs">SEE THE PHOTOGRAPHS <span>↓</span></a>
+      <span class="sep" aria-hidden="true">✦︎</span>
+      <a href="#visit">JOIN US <span>↗</span></a>
+    </nav>
+
+    <section class="gallery" id="photographs">
+      <div class="section-heading">
+        <p class="eyebrow">01 / THE PHOTOGRAPHS</p>
+        <p class="typewriter">a moment, held.</p>
+      </div>
+
+      <div class="photo-grid">
+        <button class="photo one" data-photo="1" aria-label="View Under the moon enlarged">
+          <span class="frame"><img src="photo-1.webp" alt="Under the moon" loading="lazy"></span>
+          <span class="caption"><span>01 / Under the moon</span><span>↗</span></span>
+        </button>
+        <button class="photo two" data-photo="2" aria-label="View Red sequins enlarged">
+          <span class="frame"><img src="photo-2.webp" alt="Red sequins" loading="lazy"></span>
+          <span class="caption"><span>02 / Red sequins</span><span>↗</span></span>
+        </button>
+        <button class="photo three" data-photo="3" aria-label="View Red beret enlarged">
+          <span class="frame"><img src="photo-3.webp" alt="Red beret" loading="lazy"></span>
+          <span class="caption"><span>03 / Red beret</span><span>↗</span></span>
+        </button>
+      </div>
+
+      <p class="gallery-note">
+        Look a little longer.
+        <span>Tap a photograph to see it larger.</span>
+      </p>
+    </section>
+
+    <section class="manifesto">
+      <p class="eyebrow">A NOTE TO KEEP</p>
+      <h2>
+        WITH GREAT<br>
+        CONFIDENCE<br>
+        COMES GREAT<br>
+        <span>VULNERABILITY.</span>
+      </h2>
+      <span class="handwritten">— Brianna Rae</span>
+    </section>
+
+    <section class="visit" id="visit">
+      <div class="visit-copy">
+        <p class="eyebrow">02 / VISIT</p>
+        <h2>Come see it<br><em>in person.</em></h2>
+        <p>
+          Find a photograph that stays with you.
+        </p>
+        <a class="button" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=1209+E+13th+Ave+Denver+CO+80218">
+          GET DIRECTIONS <span>↗</span>
+        </a>
+      </div>
+
+      <div class="playing-card">
+        <span class="corner">A<br>♥︎</span>
+        <span class="heart" aria-hidden="true">♥︎</span>
+        <p class="typewriter">You're invited.</p>
+        <h3>WILD TULIPS</h3>
+        <p>NOVEMBER</p>
+        <hr>
+        <p class="address">1209 E 13th Ave<br>Denver, Colorado</p>
+        <span class="corner reverse">A<br>♥︎</span>
+      </div>
+    </section>
+
+    <section class="closing">
+      <p>More of her work</p>
+      <a target="_blank" rel="noopener" href="https://www.instagram.com/poetic.photodump/">
+        @poetic.photodump <span>↗</span>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <span>BRIANNA RAE PHOTOGRAPHY © 2026</span>
+    <a href="#">BACK TO THE TOP ↑</a>
+  </footer>
+
+  <dialog id="lightbox">
+    <button class="close" aria-label="Close photograph">Close ×</button>
+    <img alt="">
+    <p></p>
+    <div>
+      <button class="prev" aria-label="Previous photograph">← Previous</button>
+      <button class="next" aria-label="Next photograph">Next →</button>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
