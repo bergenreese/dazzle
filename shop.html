@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Prints — Brianna Rae</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600&family=Special+Elite&family=Caveat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .shop-hero{background:#161729;color:var(--cream);padding:44px 6% 38px}
+    .shop-hero .eyebrow{opacity:.8;margin-bottom:14px}
+    .shop-hero h1{font:800 clamp(52px,9vw,110px)/.9 var(--display);margin:0;letter-spacing:-1px}
+    .shop-hero p{max-width:46ch;font-size:14px;line-height:1.7;margin:16px 0 0;opacity:.9}
+    .shop-hero .sizes-line{font:700 15px var(--display);letter-spacing:2px;margin-top:18px;color:#f6e2bd}
+    .shop{padding:40px 6% 50px}
+    .shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:28px 22px;max-width:1150px;margin:0 auto}
+    .item{display:flex;flex-direction:column;gap:10px}
+    .ph{aspect-ratio:4/5;background:linear-gradient(135deg,#e2d4b8,#d6c6a6);display:grid;place-items:center;color:#8a7c66;font:600 11px var(--sans);letter-spacing:2px;text-transform:uppercase;overflow:hidden}
+    .ph img{width:100%;height:100%;object-fit:cover;display:block}
+    .item h2{font:700 19px var(--display);letter-spacing:1px;margin:2px 0 0;text-transform:uppercase}
+    .item .price{font:600 11px var(--sans);letter-spacing:1.5px;text-transform:uppercase;color:#665b51;margin:0}
+    .size{display:flex;gap:8px}
+    .size label{flex:1;position:relative;cursor:pointer}
+    .size input{position:absolute;opacity:0}
+    .size span{display:block;text-align:center;padding:9px 4px;border:1px solid #16172955;font:600 11px var(--sans);letter-spacing:1px}
+    .size input:checked+span{background:#161729;color:var(--cream);border-color:#161729}
+    .size input:focus-visible+span{outline:2px solid var(--red);outline-offset:2px}
+    .buy{display:block;text-align:center;background:#3d95ce;color:#fff;padding:13px;font:600 11px var(--sans);letter-spacing:1.5px;text-transform:uppercase}
+    .buy:hover{background:#2f7fb3}
+    .how{max-width:1150px;margin:40px auto 0;padding-top:24px;border-top:1px solid #29191925;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;font-size:13px;line-height:1.6}
+    .how b{display:block;font:700 15px var(--display);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+    .back{font:600 11px var(--sans);letter-spacing:1.5px;text-transform:uppercase}
+    @media(max-width:750px){.shop-grid{grid-template-columns:1fr 1fr;gap:22px 12px}.item h2{font-size:15px}.size span{padding:8px 2px;font-size:10px}.how{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <a class="wordmark" href="index.html">brianna rae<span>✳&#xFE0E;</span></a>
+    <nav class="top-actions" aria-label="Main">
+      <a class="top-link" href="index.html#book">Book a shoot</a>
+      <span class="dot" aria-hidden="true">✳&#xFE0E;</span>
+      <a class="top-link" href="index.html">Gallery</a>
+      <span class="dot" aria-hidden="true">✳&#xFE0E;</span>
+      <a class="top-link" href="https://venmo.com/u/briannaraephotography" target="_blank" rel="noopener">Venmo</a>
+    </nav>
+  </header>
+  <main>
+    <section class="shop-hero">
+      <p class="eyebrow">DAZZLE · PRINT SHOP</p>
+      <h1>Take one home.</h1>
+      <p>Buy smaller, ready-to-ship prints here. Originals hanging at Wild Tulips are paid for at the bar.</p>
+      <p class="sizes-line">4×6 · $5 &nbsp;&nbsp;/&nbsp;&nbsp; 5×7 · $8</p>
+    </section>
+    <section class="shop">
+      <div class="shop-grid" id="grid"></div>
+      <div class="how">
+        <div><b>1. Pick a size</b>Choose 4×6 or 5×7 under the print you want.</div>
+        <div><b>2. Pay on Venmo</b>The button opens Venmo with the price and print filled in.</div>
+        <div><b>3. Add your email</b>Put your email in the Venmo note so Brianna can confirm shipping.</div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <span>BRIANNA RAE PHOTOGRAPHY © 2026</span>
+    <a class="back" href="index.html">BACK TO THE GALLERY</a>
+  </footer>
+  <script>
+    // Placeholder slots until Brianna sends the print photos. Add {title, img} entries to fill them in.
+    const prints = Array.from({length: 12}, (_, i) => ({ title: `Print ${String(i + 1).padStart(2, '0')}`, img: '' }));
+    const prices = { '4x6': 5, '5x7': 8 };
+    const grid = document.getElementById('grid');
+    const venmo = (title, size) => `https://venmo.com/briannaraephotography?txn=pay&amount=${prices[size]}&note=${encodeURIComponent(`Dazzle print: ${title}, ${size.replace('x','×')}`)}`;
+    prints.forEach((p, i) => {
+      const id = `s${i}`;
+      const el = document.createElement('article');
+      el.className = 'item';
+      el.innerHTML = `
+        <div class="ph">${p.img ? `<img src="${p.img}" alt="${p.title}" loading="lazy">` : 'Coming soon'}</div>
+        <h2>${p.title}</h2>
+        <p class="price">From $5</p>
+        <div class="size" role="radiogroup" aria-label="Size for ${p.title}">
+          <label><input type="radio" name="${id}" value="4x6" checked><span>4×6 · $5</span></label>
+          <label><input type="radio" name="${id}" value="5x7"><span>5×7 · $8</span></label>
+        </div>
+        <a class="buy" target="_blank" rel="noopener" href="${venmo(p.title, '4x6')}">Venmo · $5</a>`;
+      const buy = el.querySelector('.buy');
+      el.querySelectorAll('input').forEach(r => r.addEventListener('change', () => {
+        buy.href = venmo(p.title, r.value);
+        buy.textContent = `Venmo · $${prices[r.value]}`;
+      }));
+      grid.appendChild(el);
+    });
+  </script>
+</body>
+</html>

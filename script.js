@@ -1,7 +1,7 @@
 const dialog = document.querySelector('dialog');
 const image = dialog.querySelector('img');
 const label = dialog.querySelector('p');
-const names = ['Second serving', 'Red sequins', 'Day job'];
+const names = ['Second serving', '', 'Day job'];
 
 let current = 1;
 let last;
@@ -9,8 +9,8 @@ let last;
 function show(n) {
   current = (n + 2) % 3 + 1;
   image.src = `photo-${current}.webp`;
-  image.alt = names[current - 1];
-  label.textContent = `0${current} / ${names[current - 1]}`;
+  image.alt = names[current - 1] || `Photograph 0${current}`;
+  label.textContent = names[current - 1] ? `0${current} / ${names[current - 1]}` : `0${current}`;
 }
 
 document.querySelectorAll('[data-photo]').forEach(button => {

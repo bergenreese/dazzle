@@ -931,3 +931,4 @@ header{gap:16px}
   .playing-card .address{font-size:10px!important}
 }
 @media(max-width:750px){.visit .playing-card{width:104%;margin:10px -4% 10px 0;transform:rotate(11deg)!important}}
+.prints .sizes{font:700 18px var(--display);letter-spacing:2px;margin:14px 0 18px!important}
