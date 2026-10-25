@@ -1038,8 +1038,7 @@ body.gated{overflow:hidden}
 .env-back{box-shadow:0 40px 80px rgba(0,0,0,.5)}
 .env-back::after,.env-flap::before,.hero::before,.env-letter::before{content:"";position:absolute;inset:0;background:url(paper.jpg) center/cover;mix-blend-mode:multiply;opacity:.18;pointer-events:none;border-radius:inherit}
 .env-flap::before{opacity:.14}
-.hero{position:relative}.hero::before{opacity:.12;z-index:1}
-.hero>*{position:relative;z-index:2}
+.hero::before{opacity:.12}
 .env-stitch{width:min(96px,20vw);aspect-ratio:1;translate:-50% -30%;border-radius:50%!important;
  background:radial-gradient(circle at 35% 30%,#8a2a3c,#6b1a2b 45%,#4e0f1e)!important;
  box-shadow:inset 0 0 0 6px #6a1a2b,inset 0 0 0 7px rgba(255,255,255,.12),inset 0 0 0 9px #5a1424,inset -4px -6px 10px rgba(0,0,0,.35),inset 3px 4px 6px rgba(255,180,190,.18),0 4px 10px rgba(60,10,20,.35)!important;
@@ -1070,3 +1069,6 @@ html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
 .env-back::after{opacity:.1}.env-flap::before{opacity:.08}.env-letter::before{opacity:.06}
 .seal-b{color:#a3495b;font-size:clamp(46px,9vw,64px);text-shadow:-1px -1px 0 #3d0a16,1px 1px 1px rgba(255,190,200,.35)}
+.hero::before{z-index:5}
+.bts-strip img{width:min(320px,40%)}
+.bts-strip img:nth-child(odd){transform:none}.bts-strip img:nth-child(2){transform:translateY(22px)}
