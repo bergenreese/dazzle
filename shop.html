@@ -75,7 +75,7 @@
     prints.forEach((p, i) => {
       const id = `s${i}`;
       const el = document.createElement('article');
-      el.className = 'item';
+      el.className = 'item'; el.id = `p${String(i + 1).padStart(2, '0')}`;
       el.innerHTML = `
         <div class="ph">${p.img ? `<img src="${p.img}" alt="${p.title}" loading="lazy">` : 'Coming soon'}</div>
         <h2>${p.title}</h2>
