@@ -117,7 +117,7 @@
         <h2>Let's<br><em>collab.</em></h2>
         <p>Portraits, performers, events. What do you have in mind?</p>
       </div>
-      <form class="book-form" id="bookForm">
+      <form class="book-form" id="bookForm" action="https://formspree.io/f/xvkkkowd" method="POST">
         <label for="bName">Name</label>
         <input id="bName" name="name" required autocomplete="name">
         <label for="bEmail">Email</label>
@@ -129,7 +129,7 @@
         <label for="bMsg">Details</label>
         <textarea id="bMsg" name="message" rows="4" placeholder="Date, location, what you're picturing"></textarea>
         <button class="button" type="submit">SEND REQUEST</button>
-        <p class="fine">This opens your email app with the request filled in. Or email <a href="mailto:briannaraephotography@gmail.com">briannaraephotography@gmail.com</a> directly.</p>
+        <p class="fine" id="bookStatus" role="status">Or email <a href="mailto:briannaraephotography@gmail.com">briannaraephotography@gmail.com</a> directly.</p>
       </form>
     </section>
 

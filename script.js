@@ -47,10 +47,21 @@ dialog.addEventListener('keydown', event => {
 });
 
 const bookForm = document.getElementById('bookForm');
-bookForm?.addEventListener('submit', e => {
+const bookStatus = document.getElementById('bookStatus');
+bookForm?.addEventListener('submit', async e => {
   e.preventDefault();
-  const f = new FormData(bookForm);
-  const subject = `Shoot request: ${f.get('type')} — ${f.get('name')}`;
-  const body = `Name: ${f.get('name')}\nEmail: ${f.get('email')}\nType: ${f.get('type')}\n\n${f.get('message') || ''}`;
-  location.href = `mailto:briannaraephotography@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const btn = bookForm.querySelector('button[type=submit]');
+  btn.disabled = true; btn.textContent = 'SENDING…';
+  try {
+    const f = new FormData(bookForm);
+    f.append('_subject', `Shoot request: ${f.get('type')} — ${f.get('name')}`);
+    const r = await fetch(bookForm.action, { method: 'POST', body: f, headers: { Accept: 'application/json' } });
+    if (!r.ok) throw new Error();
+    bookForm.reset();
+    bookStatus.textContent = 'Sent! Brianna will get back to you soon.';
+    btn.textContent = 'SENT';
+  } catch {
+    bookStatus.innerHTML = 'That didn\'t go through. Try again, or email <a href="mailto:briannaraephotography@gmail.com">briannaraephotography@gmail.com</a>.';
+    btn.disabled = false; btn.textContent = 'SEND REQUEST';
+  }
 });
