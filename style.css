@@ -869,3 +869,33 @@ header{gap:16px}
 
 /* captions in the eyebrow font */
 .caption{font-family:var(--sans)!important;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase}
+
+/* round 3: svg arrows, card next to text, display font on card */
+.ico{width:1em;height:1em;vertical-align:-.12em;display:inline-block}
+.cta-bar a .ico{width:18px;height:18px}
+.closing a .ico{width:.8em;height:.8em;margin-left:14px}
+.button{justify-content:center}
+.visit{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"copy card" "btn card";gap:24px 40px;align-items:center}
+.visit-copy{grid-area:copy;align-self:end}
+.visit .playing-card{grid-area:card;margin:0 auto}
+.visit .directions{grid-area:btn;align-self:start;max-width:260px}
+.playing-card .invite,.playing-card .when,.playing-card .venue,.playing-card .address{font-family:var(--display)!important;font-weight:700;letter-spacing:1px!important;text-transform:uppercase;line-height:1.15}
+.playing-card .invite{font-size:15px;margin:0 0 8px}
+.playing-card h3{font-size:44px;letter-spacing:1px}
+.playing-card .when{font-size:15px;margin:4px 0 0}
+.playing-card .venue{font-size:17px;margin:0}
+.playing-card .address{font-size:12px;font-weight:600;margin:4px 0 0}
+@media(max-width:750px){
+  .visit{grid-template-columns:1.1fr 1fr;grid-template-areas:"copy card" "btn btn";gap:18px 14px;padding:34px 6%}
+  .visit h2{font-size:38px}
+  .visit .playing-card{width:100%;padding:24px 10px;transform:rotate(4deg)}
+  .playing-card .corner{font-size:16px;top:10px;left:10px}
+  .playing-card .reverse{top:auto;left:auto;bottom:10px;right:10px}
+  .playing-card .heart{font-size:34px}
+  .playing-card .invite{font-size:10px}
+  .playing-card h3{font-size:26px}
+  .playing-card .when,.playing-card .venue{font-size:11px}
+  .playing-card .address{font-size:9px}
+  .playing-card hr{margin:8px}
+  .visit .directions{max-width:none}
+}
