@@ -25,8 +25,9 @@
     .size span{display:block;text-align:center;padding:9px 4px;border:1px solid #16172955;font:600 11px var(--sans);letter-spacing:1px}
     .size input:checked+span{background:#161729;color:var(--cream);border-color:#161729}
     .size input:focus-visible+span{outline:2px solid var(--red);outline-offset:2px}
-    .buy{display:block;text-align:center;background:#3d95ce;color:#fff;padding:13px;font:600 11px var(--sans);letter-spacing:1.5px;text-transform:uppercase}
-    .buy:hover{background:#2f7fb3}
+    .buy{display:block;text-align:center;background:#161729;color:var(--cream);padding:13px;font:600 11px var(--sans);letter-spacing:1.5px;text-transform:uppercase}
+    .buy:hover{background:#3a3f5e}
+    .buy[aria-disabled]{background:#cdbf9f;color:#5f5546;cursor:default}
     .how{max-width:1150px;margin:40px auto 0;padding-top:24px;border-top:1px solid #29191925;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;font-size:13px;line-height:1.6}
     .how b{display:block;font:700 15px var(--display);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
     .back{font:600 11px var(--sans);letter-spacing:1.5px;text-transform:uppercase}
@@ -40,23 +41,21 @@
       <a class="top-link" href="index.html#book">Book a shoot</a>
       <span class="dot" aria-hidden="true">✳&#xFE0E;</span>
       <a class="top-link" href="index.html">Gallery</a>
-      <span class="dot" aria-hidden="true">✳&#xFE0E;</span>
-      <a class="top-link" href="https://venmo.com/u/briannaraephotography" target="_blank" rel="noopener">Venmo</a>
     </nav>
   </header>
   <main>
     <section class="shop-hero">
       <p class="eyebrow">DAZZLE · PRINT SHOP</p>
       <h1>Take one home.</h1>
-      <p>Buy smaller, ready-to-ship prints here. Originals hanging at Wild Tulips are paid for at the bar.</p>
+      <p>Buy smaller, ready-to-ship prints here. Secure checkout by card, Apple Pay or Google Pay. Originals hanging at Wild Tulips are paid for at the bar.</p>
       <p class="sizes-line">4×6 · $5 &nbsp;&nbsp;/&nbsp;&nbsp; 5×7 · $8</p>
     </section>
     <section class="shop">
       <div class="shop-grid" id="grid"></div>
       <div class="how">
         <div><b>1. Pick a size</b>Choose 4×6 or 5×7 under the print you want.</div>
-        <div><b>2. Pay on Venmo</b>The button opens Venmo with the price and print filled in.</div>
-        <div><b>3. Add your email</b>Put your email in the Venmo note so Brianna can confirm shipping.</div>
+        <div><b>2. Check out</b>Pay securely by card, Apple Pay or Google Pay.</div>
+        <div><b>3. We ship it</b>Add your shipping address at checkout. Brianna will email you a confirmation.</div>
       </div>
     </section>
   </main>
@@ -69,7 +68,9 @@
     const prints = Array.from({length: 12}, (_, i) => ({ title: `Print ${String(i + 1).padStart(2, '0')}`, img: '' }));
     const prices = { '4x6': 5, '5x7': 8 };
     const grid = document.getElementById('grid');
-    const venmo = (title, size) => `https://venmo.com/briannaraephotography?txn=pay&amount=${prices[size]}&note=${encodeURIComponent(`Dazzle print: ${title}, ${size.replace('x','×')}`)}`;
+    // Stripe Payment Links: paste Brianna's links here once she creates them.
+    const STRIPE = { '4x6': '', '5x7': '' };
+    const checkout = (title, size) => STRIPE[size] ? `${STRIPE[size]}?client_reference_id=${encodeURIComponent(title.replace(/\s+/g,'-'))}` : '';
     prints.forEach((p, i) => {
       const id = `s${i}`;
       const el = document.createElement('article');
@@ -82,11 +83,16 @@
           <label><input type="radio" name="${id}" value="4x6" checked><span>4×6 · $5</span></label>
           <label><input type="radio" name="${id}" value="5x7"><span>5×7 · $8</span></label>
         </div>
-        <a class="buy" target="_blank" rel="noopener" href="${venmo(p.title, '4x6')}">Venmo · $5</a>`;
+        <a class="buy" target="_blank" rel="noopener">Buy · $5</a>`;
       const buy = el.querySelector('.buy');
+      const setBuy = size => {
+        const url = checkout(p.title, size);
+        if (url) { buy.href = url; buy.textContent = `Buy · $${prices[size]}`; buy.removeAttribute('aria-disabled'); }
+        else { buy.removeAttribute('href'); buy.textContent = 'Checkout opens soon'; buy.setAttribute('aria-disabled','true'); }
+      };
+      setBuy('4x6');
       el.querySelectorAll('input').forEach(r => r.addEventListener('change', () => {
-        buy.href = venmo(p.title, r.value);
-        buy.textContent = `Venmo · $${prices[r.value]}`;
+        setBuy(r.value);
       }));
       grid.appendChild(el);
     });
