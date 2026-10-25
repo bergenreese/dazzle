@@ -79,3 +79,10 @@ if (matchMedia('(hover:hover)').matches) {
     el.addEventListener('mouseleave', () => kids.forEach(s => s.style.transform = ''));
   });
 }
+
+// envelope intro
+const gate = document.getElementById('gate');
+document.getElementById('envBtn')?.addEventListener('click', () => {
+  gate.classList.add('open');
+  setTimeout(() => { document.body.classList.remove('gated'); gate.remove(); }, 1800);
+});

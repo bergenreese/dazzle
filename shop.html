@@ -14,6 +14,7 @@
     .shop-hero .sizes-line{font:700 15px var(--display);letter-spacing:2px;margin-top:18px;color:#f6e2bd}
     .shop{padding:40px 6% 50px}
     .shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:28px 22px;max-width:1150px;margin:0 auto}
+    .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}.item:hover .ph img{transform:scale(1.05)}
     .item{display:flex;flex-direction:column;gap:10px}
     .ph{aspect-ratio:4/5;background:linear-gradient(135deg,#e2d4b8,#d6c6a6);display:grid;place-items:center;color:#8a7c66;font:600 11px var(--sans);letter-spacing:2px;text-transform:uppercase;overflow:hidden}
     .ph img{width:100%;height:100%;object-fit:cover;display:block}
@@ -65,7 +66,7 @@
   </footer>
   <script>
     // Placeholder slots until Brianna sends the print photos. Add {title, img} entries to fill them in.
-    const prints = Array.from({length: 12}, (_, i) => ({ title: `Print ${String(i + 1).padStart(2, '0')}`, img: '' }));
+    const prints = Array.from({length: 20}, (_, i) => { const n = String(i + 1).padStart(2, '0'); return { title: `No. ${n}`, img: `print-${n}.webp` }; });
     const prices = { '4x6': 5, '5x7': 8 };
     const grid = document.getElementById('grid');
     // Stripe Payment Links: paste Brianna's links here once she creates them.
