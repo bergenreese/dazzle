@@ -1186,3 +1186,23 @@ header,.gallery,.prints,.visit,.book,footer{background:transparent!important;bor
 .card-sig{display:block;margin:6px 0 2px}.card-sig .hw{height:30px;color:#3a3f5e}
 .shop-sig{height:46px;color:#efe2c8;margin-top:18px;display:block;width:auto}
 html,body{background:#efe2c8 url(paper-tile.jpg) top left/1200px auto repeat!important}
+
+/* ---- mobile optimization ---- */
+@media(max-width:750px){
+ .book-form input,.book-form select,.book-form textarea,.buyrow .sz{font-size:16px!important}
+ .env{width:92vw}
+ .env-stitch{width:30vw}
+ .env-hint{bottom:-56px;font-size:12px}
+ footer{flex-direction:column;align-items:flex-start;gap:6px;padding:22px 20px 30px!important}
+ footer a,.see-all a,.fine a{display:inline-block;padding:10px 0}
+ .wordmark{padding:10px 0}
+ .top-link{padding:12px 4px}
+ .top-link.pill{padding:10px 14px}
+ .button{min-height:48px;display:inline-flex;align-items:center;justify-content:center}
+ .book-form .button{width:100%}
+ .closing a{padding:6px 0;display:inline-flex}
+ .reveal{transform:translateY(16px);transition-duration:.6s}
+}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+a,button,.env{-webkit-tap-highlight-color:transparent}
+img{content-visibility:auto}
