@@ -1299,3 +1299,15 @@ img{content-visibility:auto}
 .tri-top .tri-face{background-position:0 0,center top,center}.tri-mid .tri-face{background-position:0 0,center 45%,center}.tri-bot .tri-face{background-position:0 0,center bottom,center}
 .env-back,.env-flap{background-image:url(grain.webp),url(wrinkle.webp),var(--pg,none)!important;background-size:256px,cover,cover!important}
 .tri-face{background-blend-mode:normal}.tri-face::after{content:none}
+/* ===== Bri's pick: crumpled envelope + letter slides out ===== */
+.env-letter{display:grid!important;opacity:1!important}
+.env-back,.env-flap,.env-letter{background-image:url(paper-hd.jpg)!important;background-size:cover!important;background-blend-mode:multiply!important}
+.env-back{background-color:#e6d3ac!important}
+.env-flap{background-color:#eedcb8!important}
+.env-letter{background-color:#f4e9cf!important}
+.env-front::before{background:url(paper-hd.jpg) center/cover!important;mix-blend-mode:multiply;opacity:.9}
+.env-front{background:
+ linear-gradient(to top right,#ebdbb8 50%,transparent 50.2%) left bottom/50% 100% no-repeat,
+ linear-gradient(to top left,#e5d3ad 50%,transparent 50.2%) right bottom/50% 100% no-repeat!important}
+.envelope-gate.open .env-letter{transform:translateY(-62%)!important;transition:transform .9s cubic-bezier(.2,.8,.2,1) .45s!important}
+.env-letter{opacity:0!important;transition:opacity .2s .35s,transform .9s cubic-bezier(.2,.8,.2,1) .45s!important}.envelope-gate.open .env-letter{opacity:1!important}

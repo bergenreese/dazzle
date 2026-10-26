@@ -85,9 +85,9 @@ const gate = document.getElementById('gate');
 const envBtn = document.getElementById('envBtn');
 const openEnv = e => {
   if (gate.classList.contains('open')) return;
-  const T = [['open',0],['out',800],['away',1500],['unfold1',1900],['unfold2',2550],['done',4600]];
-  T.forEach(([c,t]) => setTimeout(() => gate.classList.add(c), t));
-  setTimeout(() => { document.body.classList.remove('gated'); gate.remove(); }, 5400);
+  gate.classList.add('open');
+  setTimeout(() => gate.classList.add('done'), 2600);
+  setTimeout(() => { document.body.classList.remove('gated'); gate.remove(); }, 3400);
 };
 envBtn?.addEventListener('click', openEnv);
 envBtn?.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEnv(e); } });
