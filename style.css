@@ -1157,3 +1157,7 @@ header,main>section,footer,.cta-bar{background-image:url(paper-hd.jpg)!important
 /* 8 footer credit */
 .credit{opacity:.55;text-transform:none;letter-spacing:.5px;font-size:.9em;text-decoration:none;border-bottom:1px solid}
 @media(max-width:750px){.hero-info{grid-template-columns:1fr!important}}
+/* prints: compact centered band instead of fan */
+.prints{padding:70px 24px!important;text-align:center}
+.prints-head{max-width:640px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+.prints-head h2 br{display:none}.prints-head h2 em{margin-left:.25em}
