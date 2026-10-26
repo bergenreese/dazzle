@@ -12,7 +12,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <title>Dazzle — Brianna Rae</title>
   <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@1,600&family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600&family=Special+Elite&family=Caveat:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=18">
+  <link rel="stylesheet" href="style.css?v=19">
 </head>
 <body class="gated">
   <div class="envelope-gate" id="gate">
@@ -30,7 +30,7 @@
     <nav class="top-actions" aria-label="Main">
       <a class="top-link" href="#book">Book a shoot</a>
       <span class="dot" aria-hidden="true">✳︎</span>
-      <a class="top-link" href="shop.html">Buy prints</a>
+      <a class="top-link pill" href="shop.html">Buy prints</a>
     </nav>
   </header>
 
@@ -71,9 +71,9 @@
           <span class="frame"><img src="photo-1.webp" alt="Under the moon" loading="lazy"></span>
           <span class="caption"><span>01 / Second serving</span><span><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></span></span>
         </button>
-        <button class="photo two" data-photo="2" aria-label="View photograph 02 enlarged">
-          <span class="frame"><img src="photo-2.webp" alt="Photograph 02" loading="lazy"></span>
-          <span class="caption"><span>02</span><span><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></span></span>
+        <button class="photo two" data-photo="2" aria-label="View Fringe benefits enlarged">
+          <span class="frame"><img src="photo-2.webp" alt="Fringe benefits" loading="lazy"></span>
+          <span class="caption"><span>02 / Fringe benefits</span><span><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></span></span>
         </button>
         <button class="photo three" data-photo="3" aria-label="View Red beret enlarged">
           <span class="frame"><img src="photo-3.webp" alt="Red beret" loading="lazy"></span>
@@ -90,6 +90,11 @@
         <h2>Take one<br><em>home.</em></h2>
         <p class="prints-line">Buy smaller, ready-to-ship prints here.</p>
         <a class="button make" href="shop.html">MAKE IT YOURS</a>
+      </div>
+          <div class="prints-fan" aria-hidden="true">
+        <img src="print-14.webp" alt="" loading="lazy">
+        <img src="print-13.webp" alt="" loading="lazy">
+        <img src="print-20.webp" alt="" loading="lazy">
       </div>
     </section>
 
@@ -131,16 +136,16 @@
         <p>Portraits, performers, events. What do you have in mind?</p>
       </div>
       <form class="book-form" id="bookForm" action="https://formspree.io/f/xvkkkowd" method="POST">
-        <label for="bName">Name</label>
-        <input id="bName" name="name" required autocomplete="name">
-        <label for="bEmail">Email</label>
-        <input id="bEmail" name="email" type="email" required autocomplete="email">
+        <div class="frow">
+          <div><label for="bName">Name</label><input id="bName" name="name" required autocomplete="name"></div>
+          <div><label for="bEmail">Email</label><input id="bEmail" name="email" type="email" required autocomplete="email"></div>
+        </div>
         <label for="bType">Type of shoot</label>
         <select id="bType" name="type">
           <option>Portrait</option><option>Performance / event</option><option>Something else</option>
         </select>
         <label for="bMsg">Details</label>
-        <textarea id="bMsg" name="message" rows="4" placeholder="Date, location, what you're picturing"></textarea>
+        <textarea id="bMsg" name="message" rows="3" placeholder="Date, location, what you're picturing"></textarea>
         <button class="button" type="submit">SEND REQUEST</button>
         <p class="fine" id="bookStatus" role="status">Or email <a href="mailto:briannaraephotography@gmail.com">briannaraephotography@gmail.com</a> directly.</p>
       </form>
@@ -155,7 +160,7 @@
   </main>
 
   <footer>
-    <span>BRIANNA RAE PHOTOGRAPHY © 2026</span>
+    <span>BRIANNA RAE PHOTOGRAPHY © 2026 · <a href="https://commons.wikimedia.org/wiki/File:Free_crumpled_paper_texture_for_layers_(2978651767).jpg" target="_blank" rel="noopener" class="credit">paper texture: Wikimedia Commons</a></span>
     <a href="#">BACK TO THE TOP <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14V3M3.5 7.5L8 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></a>
   </footer>
 
@@ -169,7 +174,7 @@
     </div>
   </dialog>
 
-  <script src="script.js?v=18"></script>
+  <script src="script.js?v=19"></script>
   <script data-goatcounter="https://briannarae.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
