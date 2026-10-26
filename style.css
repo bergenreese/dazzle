@@ -1311,3 +1311,21 @@ img{content-visibility:auto}
  linear-gradient(to top left,#e5d3ad 50%,transparent 50.2%) right bottom/50% 100% no-repeat!important}
 .envelope-gate.open .env-letter{transform:translateY(-62%)!important;transition:transform .9s cubic-bezier(.2,.8,.2,1) .45s!important}
 .env-letter{opacity:0!important;transition:opacity .2s .35s,transform .9s cubic-bezier(.2,.8,.2,1) .45s!important}.envelope-gate.open .env-letter{opacity:1!important}
+/* ---- mobile layout fix ---- */
+img{content-visibility:visible!important}
+@media(max-width:750px){
+ header{padding:10px 16px!important;gap:10px}
+ .wordmark{font-size:17px!important}
+ .top-actions{gap:8px!important}
+ .top-link{font-size:10px!important;letter-spacing:1px!important;padding:8px 2px!important}
+ .top-link.pill{padding:8px 12px!important;min-height:34px;box-shadow:2px 2px 0 #525b8b}
+ .env-letter{inset:7% 5% 9%!important}
+ .env-letter b{font-size:34px!important}
+ .env-letter small{font-size:7px!important;letter-spacing:1.6px!important}
+ .env-sig{height:24px!important}
+ .visit{display:block!important;padding-bottom:40px!important}
+ .visit .playing-card{position:relative!important;margin:36px auto 0!important;right:auto!important;left:auto!important;top:auto!important;width:min(260px,72vw)!important;transform:rotate(4deg)!important}
+ .visit .button.directions{width:auto!important;max-width:none}
+ footer .credit{border-bottom:0;text-decoration:underline}
+ footer{font-size:10px}
+}
