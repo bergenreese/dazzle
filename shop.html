@@ -61,16 +61,16 @@
     <section class="shop-hero">
       <p class="eyebrow">DAZZLE · PRINT SHOP</p>
       <h1>Take one home.</h1>
-      <p>Buy smaller, ready-to-ship prints here. Secure checkout by card, Apple Pay or Google Pay. Originals hanging at Wild Tulips are paid for at the bar.</p>
+      <p>Buy smaller, ready-to-ship prints here. Secure checkout by card, Apple Pay, or Google Pay. Originals hanging at Wild Tulips are paid for at the bar.</p>
       <p class="sizes-line">4×6 · $5 &nbsp;&nbsp;/&nbsp;&nbsp; 5×7 · $8 &nbsp;&nbsp;/&nbsp;&nbsp; Framed · $30</p>
       <span class="hw shop-sig" role="img" aria-label="Brianna Rae" style="--m:url(hw-sig.png);aspect-ratio:814/195"></span>
     </section>
     <section class="shop">
-      <div class="bundle"><div><b>Any 3 prints · $15</b><p>Pick three 4×6 prints and tell us which at checkout. Each print is a limited edition of 25.</p></div><a href="https://buy.stripe.com/4gMbJ1dRicYPeCDbmu08g03" target="_blank" rel="noopener">Build a bundle</a></div>
+      <div class="bundle"><div><b>Any 3 prints · $15</b><p>Pick any three 4×6 prints, and tell us which ones at checkout. Each print is a limited edition of 25.</p></div><a href="https://buy.stripe.com/4gMbJ1dRicYPeCDbmu08g03" target="_blank" rel="noopener">Build a bundle</a></div>
     <div class="shop-grid" id="grid"></div>
       <div class="how">
-        <div><b>1. Pick a size</b>Choose 4×6, 5×7 or framed under the print you want.</div>
-        <div><b>2. Check out</b>Pay securely by card, Apple Pay or Google Pay.</div>
+        <div><b>1. Pick a size</b>Choose 4×6, 5×7, or framed under the print you want.</div>
+        <div><b>2. Check out</b>Pay securely by card, Apple Pay, or Google Pay.</div>
         <div><b>3. We ship it</b>Add your shipping address at checkout. Brianna will email you a confirmation.</div>
       </div>
     </section>
@@ -90,7 +90,7 @@
     const prices = { '4x6': 5, '5x7': 8, 'framed': 30 };
     const grid = document.getElementById('grid');
     const lb=document.getElementById('lb'),lbI=lb.querySelector('img'),lbP=lb.querySelector('p');lb.querySelector('.close').onclick=()=>lb.close();lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
-    // Stripe Payment Links: paste Brianna's links here once she creates them.
+    // Stripe Payment Links: paste Brianna’s links here once she creates them.
     const STRIPE = { '4x6': 'https://buy.stripe.com/dRmfZh00s0c31PRaiq08g00', '5x7': 'https://buy.stripe.com/4gMdR9aF6e2T8efaiq08g01', 'framed': 'https://buy.stripe.com/bJebJ100scYP7ab3U208g02' };
     const checkout = (title, size) => STRIPE[size] ? `${STRIPE[size]}?client_reference_id=${encodeURIComponent(title.replace(/\s+/g,'-'))}` : '';
     prints.forEach((p, i) => {
