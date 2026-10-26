@@ -1173,3 +1173,13 @@ header,main>section,footer,.cta-bar{background-image:url(paper-hd.jpg)!important
 .handwritten{transform:rotate(-4deg)}
 @media(max-width:750px){.hw-preview{height:30px}.hw-closer{height:24px}.hw-sig{height:40px}.hw-connect{height:32px}}
 .gallery-note .hw,.typewriter .hw{color:#525b8b}
+
+/* ---- one continuous paper for all cream areas ---- */
+html,body{background:#efe2c8 url(paper-cream.jpg) top center/1600px auto repeat!important}
+header,.gallery,.prints,.visit,.book,footer{background:transparent!important;border-top:0!important;border-bottom:0!important;box-shadow:none!important}
+.hero,.manifesto,.shop-hero,main>section.hero{background:#161729 url(paper-hd.jpg) center/cover!important;background-blend-mode:multiply!important}
+.cta-bar,.closing{background:#3a3f5e url(paper-hd.jpg) center/cover!important;background-blend-mode:multiply!important}
+.book-form input,.book-form select,.book-form textarea,.buyrow .sz{background-color:rgba(255,250,238,.55)!important}
+.shop,main{background:transparent!important}
+.env-sig{height:clamp(26px,5vw,40px);color:#161729;margin-top:6px}
+.envelope-gate.open{transition:opacity .8s ease 2.2s,visibility 0s 3s}
