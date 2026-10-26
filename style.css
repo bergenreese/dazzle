@@ -1161,3 +1161,15 @@ header,main>section,footer,.cta-bar{background-image:url(paper-hd.jpg)!important
 .prints{padding:70px 24px!important;text-align:center}
 .prints-head{max-width:640px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
 .prints-head h2 br{display:none}.prints-head h2 em{margin-left:.25em}
+
+/* ---- Bri's handwriting (masked so it takes each section's ink color) ---- */
+.hw{display:inline-block;background:currentColor;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;vertical-align:middle}
+.hw-preview{height:44px}
+.hw-closer{height:34px;display:block;margin:0 auto 6px}
+.hw-sig{height:58px}
+.hw-connect{height:42px}
+.typewriter,.gallery-note,.handwritten,.closing p{font-size:0!important;line-height:1}
+.gallery-note span:not(.hw){font-size:12px!important;display:block;line-height:1.6}
+.handwritten{transform:rotate(-4deg)}
+@media(max-width:750px){.hw-preview{height:30px}.hw-closer{height:24px}.hw-sig{height:40px}.hw-connect{height:32px}}
+.gallery-note .hw,.typewriter .hw{color:#525b8b}
