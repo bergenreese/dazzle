@@ -84,8 +84,11 @@ if (matchMedia('(hover:hover)').matches) {
 const gate = document.getElementById('gate');
 const envBtn = document.getElementById('envBtn');
 const openEnv = e => { if (e.target.closest('.env-cal')) return;
+  if (gate.classList.contains('open')) return;
   gate.classList.add('open');
-  setTimeout(() => { document.body.classList.remove('gated'); gate.remove(); }, 3100);
+  setTimeout(() => gate.classList.add('crumple'), 2500);
+  setTimeout(() => gate.classList.add('toss'), 3300);
+  setTimeout(() => { document.body.classList.remove('gated'); gate.remove(); }, 4300);
 };
 envBtn?.addEventListener('click', openEnv);
 envBtn?.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEnv(e); } });
