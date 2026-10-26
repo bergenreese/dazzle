@@ -1104,3 +1104,17 @@ header,main>section,footer,.cta-bar{background-image:url(paper-hd.jpg)!important
 .env-front::after{content:"";position:absolute;inset:0;background:url(paper-hd.jpg) center/cover;mix-blend-mode:multiply;pointer-events:none;
  clip-path:polygon(0 0,50% 100%,100% 0,100% 100%,0 100%)}
 .env-stitch{width:min(132px,26vw)}
+
+/* ---- gate matches site palette + hold on letter ---- */
+.envelope-gate{background:radial-gradient(ellipse at 50% 35%,#2a2c4a,#161729 72%)}
+.env-back{background:#e6d6b5}
+.env-front{background:
+ linear-gradient(to top right,#efe2c8 50%,transparent 50.2%) left bottom/50% 100% no-repeat,
+ linear-gradient(to top left,#ebdcbf 50%,transparent 50.2%) right bottom/50% 100% no-repeat}
+.env-flap{background:#f2e3c6}
+.env-letter{background:#f7eedb}
+.env-letter b{color:#161729}
+.env-letter small{color:#525b8b}
+.env-hint{color:#efe2c8}
+.seal-img{filter:hue-rotate(-112deg) saturate(.8) brightness(.95)}
+.envelope-gate.open{transition:opacity .9s ease 3.4s,visibility 0s 4.3s}
