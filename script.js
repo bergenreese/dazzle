@@ -95,3 +95,4 @@ const rv = document.querySelectorAll('main > section:not(.hero), .reveal');
 rv.forEach(el => el.classList.add('reveal'));
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px' });
 rv.forEach(el => io.observe(el));
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) { document.body.classList.remove('gated'); document.getElementById('gate')?.remove(); }

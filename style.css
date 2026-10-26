@@ -1206,3 +1206,7 @@ html,body{background:#efe2c8 url(paper-tile.jpg) top left/1200px auto repeat!imp
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 a,button,.env{-webkit-tap-highlight-color:transparent}
 img{content-visibility:auto}
+/* panel fixes */
+.frame,.photo .frame{background:#1a1b2e}
+.buyrow .buy,.top-link,.see-all a,.fine a,footer a{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+@media (prefers-reduced-motion:reduce){.envelope-gate{display:none}body.gated{overflow:auto}}
