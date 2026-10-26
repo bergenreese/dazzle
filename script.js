@@ -83,12 +83,11 @@ if (matchMedia('(hover:hover)').matches) {
 // envelope intro
 const gate = document.getElementById('gate');
 const envBtn = document.getElementById('envBtn');
-const openEnv = e => { if (e.target.closest('.env-cal')) return;
+const openEnv = e => {
   if (gate.classList.contains('open')) return;
-  gate.classList.add('open');
-  setTimeout(() => gate.classList.add('crumple'), 2500);
-  setTimeout(() => gate.classList.add('toss'), 3300);
-  setTimeout(() => { document.body.classList.remove('gated'); gate.remove(); }, 4300);
+  const T = [['open',0],['out',800],['away',1500],['unfold1',1900],['unfold2',2550],['done',4600]];
+  T.forEach(([c,t]) => setTimeout(() => gate.classList.add(c), t));
+  setTimeout(() => { document.body.classList.remove('gated'); gate.remove(); }, 5400);
 };
 envBtn?.addEventListener('click', openEnv);
 envBtn?.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEnv(e); } });

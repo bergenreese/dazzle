@@ -1232,25 +1232,48 @@ img{content-visibility:auto}
 .env-letter{background:#fbf6ea!important;box-shadow:0 2px 6px rgba(0,0,0,.12),inset 0 0 0 14px #fbf6ea,inset 0 0 0 15px #cbbd9f!important}
 .env-crumple{position:absolute;inset:-6%;z-index:6;opacity:0;pointer-events:none;background:url(paper-tile.jpg) center/cover;border-radius:8px;box-shadow:0 20px 40px rgba(0,0,0,.4)}
 .envelope-gate.open{transition:none!important;opacity:1!important;visibility:visible!important}
-.envelope-gate.crumple .env{animation:crumple .8s cubic-bezier(.6,0,.4,1) forwards}
-.envelope-gate.crumple .env-crumple{animation:crumpleTex .8s ease forwards}
+.envelope-gate.crumple .env{filter:url(#crump) drop-shadow(0 18px 24px rgba(0,0,0,.45));transform:scale(.94) rotate(-1.5deg);transition:transform 1.1s cubic-bezier(.5,0,.3,1)}
+.env-crumple{inset:0;border-radius:4px;box-shadow:none!important;background:url(paper-hd.jpg) center/cover!important;mix-blend-mode:multiply}
+.envelope-gate.crumple .env-crumple{opacity:.95;transition:opacity 1.1s ease-in;filter:contrast(1.5) brightness(1.05)}
 .envelope-gate.crumple .env-hint{opacity:0}
-.envelope-gate.toss .env{animation:crumpleEnd .01s forwards,toss .9s cubic-bezier(.45,-.2,.7,.6) forwards}
-.envelope-gate.toss{transition:background-color .6s .3s!important}
-.envelope-gate.toss::before{transition:opacity .6s .3s;opacity:0}
-.envelope-gate.toss{animation:gateFade .7s .45s forwards}
-@keyframes crumple{
- 0%{transform:none;border-radius:0}
- 35%{transform:scale(.8,.72) rotate(-6deg) skew(4deg,-3deg)}
- 70%{transform:scale(.42,.48) rotate(10deg) skew(-8deg,6deg)}
- 100%{transform:scale(.24) rotate(-18deg);clip-path:circle(38% at 50% 50%)}
-}
-@keyframes crumpleEnd{to{transform:scale(.24) rotate(-18deg);clip-path:circle(38% at 50% 50%)}}
-@keyframes crumpleTex{0%{opacity:0;filter:brightness(1.1)}60%{opacity:.85}100%{opacity:1;filter:brightness(.95) contrast(1.4)}}
-@keyframes toss{
- 0%{transform:scale(.24) rotate(-18deg) translate(0,0);clip-path:circle(38% at 50% 50%)}
- 35%{transform:scale(.26) rotate(160deg) translate(80px,-180px);clip-path:circle(38% at 50% 50%)}
- 100%{transform:scale(.18) rotate(520deg) translate(900px,900px);clip-path:circle(38% at 50% 50%)}
-}
-@keyframes gateFade{to{opacity:0;visibility:hidden}}
-.env-crumple{background:radial-gradient(circle at 38% 32%,rgba(255,255,255,.35),transparent 40%),radial-gradient(circle at 60% 70%,rgba(0,0,0,.35),transparent 60%),url(paper-hd.jpg) center/60% auto,#e9dcc2;background-blend-mode:normal,multiply,multiply}
+.envelope-gate.toss .env{transform:translateY(55vh) scale(.8) rotate(7deg);opacity:0;transition:transform .75s cubic-bezier(.55,0,.8,.4),opacity .6s .15s}
+.envelope-gate.toss{transition:opacity .6s .25s!important;opacity:0!important}
+.envelope-gate.crumple .env-crumple{opacity:1;filter:contrast(2.1) brightness(1.08)}
+
+/* ===== intro v3: tri-fold letter out of envelope, then unfold ===== */
+.envelope-gate,.envelope-gate.open{opacity:1!important;visibility:visible!important;animation:none!important;transition:none!important}
+.envelope-gate{perspective:1600px}
+.envelope-gate.done{opacity:0!important;transition:opacity .8s ease!important}
+.env{transition:transform .6s cubic-bezier(.5,0,.3,1),opacity .5s}
+.env-letter,.env-crumple{display:none!important}
+.env-folded{position:absolute;left:7%;right:7%;top:10%;height:64%;background:linear-gradient(#fcf8ef,#f3ecdc);box-shadow:0 1px 3px rgba(0,0,0,.15);z-index:1;transition:transform .7s cubic-bezier(.3,.7,.2,1)}
+.envelope-gate.out .env-folded{transform:translateY(-78%)}
+.envelope-gate.away .env{transform:translateY(70vh) rotate(4deg);opacity:0}
+/* folded letter object */
+.tri{position:absolute;left:50%;top:50%;width:min(420px,84vw);aspect-ratio:3/1.4;transform:translate(-50%,-50%) translateY(-12vh);opacity:0;transform-style:preserve-3d;z-index:3;transition:transform .5s cubic-bezier(.3,.7,.2,1),opacity .2s}
+.envelope-gate.away .tri{opacity:1;transform:translate(-50%,-50%)}
+.tri-p{position:absolute;left:0;right:0;height:100%;transform-style:preserve-3d}
+.tri-mid{top:0;z-index:1}
+.tri-top{bottom:100%;transform-origin:bottom center;transform:rotateX(-180deg);transition:transform .65s cubic-bezier(.45,.05,.2,1);z-index:3}
+.tri-bot{top:100%;transform-origin:top center;transform:rotateX(180deg);transition:transform .65s cubic-bezier(.45,.05,.2,1);z-index:2}
+.envelope-gate.unfold1 .tri-bot{transform:rotateX(0)}
+.envelope-gate.unfold2 .tri-top{transform:rotateX(0)}
+.envelope-gate.unfold1 .tri{transform:translate(-50%,-50%) translateY(-18%)}
+.envelope-gate.unfold2 .tri{transform:translate(-50%,-50%)}
+.tri-face,.tri-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:grid;place-content:center;justify-items:center;gap:6px;text-align:center;color:#161729}
+.tri-face{background:#fbf7ee}
+.tri-back{background:#f1e9d8;transform:rotateX(180deg)}
+.tri-mid .tri-face{box-shadow:0 22px 40px rgba(0,0,0,.45)}
+.tri-face b{font:600 italic clamp(40px,9vw,60px)/1 'Cormorant Garamond',serif;letter-spacing:3px}
+.tri-face small{font:600 9px 'DM Sans',sans-serif;letter-spacing:2.5px;text-transform:uppercase;color:#525b8b}
+.tri-sig .hw{height:34px;color:#161729}
+/* creases + worn edges */
+.tri-top .tri-face{box-shadow:inset 0 -6px 8px -6px rgba(60,40,20,.35)}
+.tri-bot .tri-face{box-shadow:inset 0 6px 8px -6px rgba(60,40,20,.35),0 22px 40px rgba(0,0,0,.45)}
+.tri-mid .tri-face::before,.tri-mid .tri-face::after{content:"";position:absolute;left:0;right:0;height:3px}
+.tri-mid .tri-face::before{top:0;background:linear-gradient(rgba(0,0,0,.18),rgba(255,255,255,.7))}
+.tri-mid .tri-face::after{bottom:0;background:linear-gradient(rgba(255,255,255,.7),rgba(0,0,0,.18))}
+.tri-face{background-image:radial-gradient(ellipse at 50% 50%,transparent 60%,rgba(140,110,70,.14) 100%)}
+.tri::after{content:"";position:absolute;inset:-100% 0;border-radius:2px;box-shadow:inset 0 0 18px rgba(120,90,50,.28);opacity:0;transition:opacity .6s;pointer-events:none}
+.envelope-gate.unfold2 .tri::after{opacity:1;transition-delay:.5s}
+@media (prefers-reduced-motion:reduce){.envelope-gate{display:none}}
