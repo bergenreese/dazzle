@@ -1183,3 +1183,6 @@ header,.gallery,.prints,.visit,.book,footer{background:transparent!important;bor
 .shop,main{background:transparent!important}
 .env-sig{height:clamp(26px,5vw,40px);color:#161729;margin-top:6px}
 .envelope-gate.open{transition:opacity .8s ease 2.2s,visibility 0s 3s}
+.card-sig{display:block;margin:6px 0 2px}.card-sig .hw{height:30px;color:#3a3f5e}
+.shop-sig{height:46px;color:#efe2c8;margin-top:18px;display:block;width:auto}
+html,body{background:#efe2c8 url(paper-tile.jpg) top left/1200px auto repeat!important}
