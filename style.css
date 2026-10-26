@@ -1118,3 +1118,14 @@ header,main>section,footer,.cta-bar{background-image:url(paper-hd.jpg)!important
 .env-hint{color:#efe2c8}
 .seal-img{filter:hue-rotate(-112deg) saturate(.8) brightness(.95)}
 .envelope-gate.open{transition:opacity .9s ease 3.4s,visibility 0s 4.3s}
+
+/* ---- consistency pass ---- */
+:where(main > section, main > div){background-color:#efe2c8}
+.envelope-gate{background:#1b1c33 url(paper-hd.jpg) center/cover;background-blend-mode:multiply}
+.envelope-gate::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 38%,rgba(70,74,120,.35),rgba(10,10,25,.45) 75%);pointer-events:none}
+.env{z-index:1}
+.prints-line{font-family:'DM Sans',sans-serif;font-size:17px}
+@media(max-width:750px){.playing-card .when{font-size:10px;letter-spacing:2px}}
+.seal-img{filter:hue-rotate(-108deg) saturate(.55) brightness(1.75) contrast(.95)}
+.seal-img{filter:hue-rotate(-105deg) saturate(.32) brightness(2.05) contrast(.92)}
+.seal-img{filter:hue-rotate(-105deg) saturate(.4) brightness(2.7) contrast(.85)}
