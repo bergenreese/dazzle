@@ -1286,3 +1286,11 @@ img{content-visibility:auto}
 .env-folded{background:linear-gradient(#f4e9cf,#ecdfc0)!important}
 .tri-face{background-color:#f4e9cf!important}
 .tri-back{background:#eadcbb!important}
+/* organic paper grain on envelope + card */
+.env-back,.env-flap,.env-folded,.tri-face,.tri-back{background-image:url(grain.webp),var(--pg,none)!important}
+.env-back{--pg:linear-gradient(160deg,#ead9b4,#dcc59a)}
+.env-flap{--pg:linear-gradient(180deg,#f2e4c4,#e6d3ac)}
+.env-folded{--pg:linear-gradient(#f4e9cf,#ecdfc0)}
+.env-back,.env-flap,.env-folded,.tri-face,.tri-back{background-size:256px,cover!important}
+.env-front{position:absolute}.env-front::before{content:"";position:absolute;inset:0;background:url(grain.webp) 0 0/256px;-webkit-mask:linear-gradient(to top right,#000 50%,transparent 50.2%) left bottom/50% 100% no-repeat,linear-gradient(to top left,#000 50%,transparent 50.2%) right bottom/50% 100% no-repeat;mask:linear-gradient(to top right,#000 50%,transparent 50.2%) left bottom/50% 100% no-repeat,linear-gradient(to top left,#000 50%,transparent 50.2%) right bottom/50% 100% no-repeat}
+.tri-face{background-image:url(grain.webp),radial-gradient(ellipse at 50% 50%,transparent 60%,rgba(140,110,70,.14) 100%)!important;background-size:256px,cover!important}
