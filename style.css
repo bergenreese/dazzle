@@ -1210,3 +1210,14 @@ img{content-visibility:auto}
 .frame,.photo .frame{background:#1a1b2e}
 .buyrow .buy,.top-link,.see-all a,.fine a,footer a{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
 @media (prefers-reduced-motion:reduce){.envelope-gate{display:none}body.gated{overflow:auto}}
+
+/* ---- CTAs stand out ---- */
+.button,.top-link.pill,.see-all a{font:700 13px 'DM Sans',sans-serif!important;letter-spacing:2.5px!important;text-transform:uppercase;padding:16px 30px!important;min-height:52px;border:2px solid #161729!important;box-shadow:5px 5px 0 #525b8b;transition:transform .2s,box-shadow .2s!important;text-decoration:none}
+.button::after,.see-all a::after{content:" →";margin-left:6px}
+.button:hover,.top-link.pill:hover,.see-all a:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 #525b8b}
+.button:active,.top-link.pill:active,.see-all a:active{transform:translate(3px,3px);box-shadow:2px 2px 0 #525b8b}
+.see-all a{display:inline-flex!important;background:#efe2c8;color:#161729!important}
+.top-link.pill{padding:10px 18px!important;min-height:42px;box-shadow:3px 3px 0 #525b8b;border-radius:999px}
+.cta-bar a{font-size:18px!important;letter-spacing:2px}
+.cta-bar a:hover{color:#fff}
+@media(max-width:750px){.button{width:100%;max-width:340px}.see-all a{width:100%;max-width:340px;justify-content:center}.top-link.pill{padding:8px 14px!important;min-height:38px}}
