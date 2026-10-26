@@ -1092,3 +1092,15 @@ header,main>section,footer,.cta-bar{background-image:url(paper-soft.jpg)!importa
 .env-back::after,.env-flap::before,.env-letter::before{background:url(paper-soft.jpg) center/cover;mix-blend-mode:multiply;opacity:.6}
 header,.gallery,.prints,.visit,footer{background-color:#efe2c8!important}
 header,main>section,footer,.cta-bar{background-size:cover!important;background-repeat:no-repeat!important;background-position:center!important}
+.hero-portrait{filter:none!important}
+
+/* ---- v14: HD paper everywhere, photo wax seal, bigger nav taps ---- */
+header,main>section,footer,.cta-bar{background-image:url(paper-hd.jpg)!important}
+.env-back::after,.env-flap::before,.env-letter::before{background:url(paper-hd.jpg) center/cover;mix-blend-mode:multiply;opacity:1}
+.env-stitch{background:none!important;box-shadow:none!important;width:min(112px,24vw);aspect-ratio:290/260;border-radius:0!important;translate:-50% -28%;filter:drop-shadow(0 3px 4px rgba(40,5,12,.45)) drop-shadow(0 1px 1px rgba(0,0,0,.35))}
+.env-stitch::after{display:none}
+.seal-img{width:100%;height:100%;display:block}
+.top-link{display:inline-block;padding:14px 4px;margin:-14px 0}
+.env-front::after{content:"";position:absolute;inset:0;background:url(paper-hd.jpg) center/cover;mix-blend-mode:multiply;pointer-events:none;
+ clip-path:polygon(0 0,50% 100%,100% 0,100% 100%,0 100%)}
+.env-stitch{width:min(132px,26vw)}
