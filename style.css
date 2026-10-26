@@ -1209,7 +1209,7 @@ img{content-visibility:auto}
 /* panel fixes */
 .frame,.photo .frame{background:#1a1b2e}
 .buyrow .buy,.top-link,.see-all a,.fine a,footer a{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
-@media (prefers-reduced-motion:reduce){.envelope-gate{display:none}body.gated{overflow:auto}}
+
 
 /* ---- CTAs stand out ---- */
 .button,.top-link.pill,.see-all a{font:700 13px 'DM Sans',sans-serif!important;letter-spacing:2.5px!important;text-transform:uppercase;padding:16px 30px!important;min-height:52px;border:2px solid #161729!important;box-shadow:5px 5px 0 #525b8b;transition:transform .2s,box-shadow .2s!important;text-decoration:none}
@@ -1276,7 +1276,7 @@ img{content-visibility:auto}
 .tri-face{background-image:radial-gradient(ellipse at 50% 50%,transparent 60%,rgba(140,110,70,.14) 100%)}
 .tri::after{content:"";position:absolute;inset:-100% 0;border-radius:2px;box-shadow:inset 0 0 18px rgba(120,90,50,.28);opacity:0;transition:opacity .6s;pointer-events:none}
 .envelope-gate.unfold2 .tri::after{opacity:1;transition-delay:.5s}
-@media (prefers-reduced-motion:reduce){.envelope-gate{display:none}}
+
 /* creamier envelope + card */
 .env-back{background:linear-gradient(160deg,#ead9b4,#dcc59a)!important}
 .env-front{background:
@@ -1329,3 +1329,10 @@ img{content-visibility:visible!important}
  footer .credit{border-bottom:0;text-decoration:underline}
  footer{font-size:10px}
 }
+
+/* Bri: mobile hero full-frame, info overlaps jacket, CTA bar at bottom of screen */
+@media(max-width:750px){
+ .hero{height:calc(100svh - 52px - 58px)!important;min-height:520px;overflow:hidden}
+ .hero-info{left:auto!important;right:14px!important;top:auto!important;bottom:18px!important;width:auto!important;background:rgba(22,23,41,.82)!important;padding:10px 12px!important;display:grid!important;grid-template-columns:1fr!important;transform:rotate(-3deg)!important;border:0!important}
+}
+@media (prefers-reduced-motion:reduce){.env-letter,.env-flap,.env-stitch{transition-duration:.01s!important}}
