@@ -53,6 +53,22 @@ module.exports = async (req, res) => {
     form[`line_items[${i}][price_data][product_data][images][0]`] = it.img;
   });
   if (ship) form['shipping_address_collection[allowed_countries][0]'] = 'US';
+  // One-of-a-kind guard: refuse a framed original that already has a successful payment.
+  const framedTitles = lines.filter(l => l?.size === 'framed').map(l => l.title);
+  const slug = t => 'f_' + t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 36);
+  try {
+    for (const t of framedTitles) {
+      const q = `status:'succeeded' AND metadata['${slug(t)}']:'1'`;
+      const r = await stripe('/payment_intents/search?query=' + encodeURIComponent(q) + '&limit=1');
+      if (r.data && r.data.length) return res.status(409).json({ error: 'sold', message: `${t} (framed original) has already sold. Remove it from your bag to continue.` });
+    }
+  } catch (e) {
+    if (e.code === 'not_configured') return res.status(503).json({ error: 'not_configured' });
+    // search unavailable: fall through rather than block the sale
+  }
+  framedTitles.forEach(t => { form[`payment_intent_data[metadata][${slug(t)}]`] = '1'; });
+  form['payment_intent_data[metadata][prints]'] = form['metadata[prints]'];
+  form.expires_at = Math.floor(Date.now() / 1000) + 30 * 60; // checkout link lives 30 min
   try {
     const s = await stripe('/checkout/sessions', { method: 'POST', form });
     res.status(200).json({ url: s.url });
