@@ -27,6 +27,7 @@
 .buyrow{display:flex;gap:8px}.buyrow .sz{flex:1;min-width:0;font:600 12px var(--sans);letter-spacing:.5px;padding:10px 8px;border:1px solid #16172966;background:#f8efdc;color:#161729;border-radius:0;-webkit-appearance:none;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#161729 50%),linear-gradient(135deg,#161729 50%,transparent 50%);background-position:calc(100% - 14px) 50%,calc(100% - 9px) 50%;background-size:5px 5px;background-repeat:no-repeat}.buyrow .buy{flex:none;width:auto;padding:10px 18px;margin:0}@media(max-width:750px){.buyrow{flex-direction:column}.buyrow .buy{text-align:center}}
 .ph{background:#1a1b2e}.zoom{all:unset;display:block;width:100%;height:100%;cursor:zoom-in}#lb{border:0;padding:16px;background:#161729;color:#efe2c8;max-width:94vw;max-height:94vh}#lb::backdrop{background:rgba(10,10,20,.85)}#lb img{display:block;max-width:88vw;max-height:80vh;margin:0 auto}#lb p{text-align:center;font:700 14px var(--display);letter-spacing:2px;margin:10px 0 0}#lb .close{background:none;border:0;color:#efe2c8;font:600 12px var(--sans);letter-spacing:2px;text-transform:uppercase;float:right;padding:10px;cursor:pointer}
 .buyrow .buy{font-weight:700;letter-spacing:2px;box-shadow:3px 3px 0 #525b8b;transition:transform .2s,box-shadow .2s}.buyrow .buy:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 #525b8b}.bundle a{font-weight:700;box-shadow:4px 4px 0 #525b8b;padding:14px 24px!important}
+.item .no{font:600 10px var(--sans);letter-spacing:2px;color:#8a8070;margin:-4px 0 0}
     .bundle{max-width:1100px;margin:0 auto 40px;padding:22px 26px;background:#161729;color:#efe2c8;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}.bundle b{font:800 22px var(--display);letter-spacing:1px;text-transform:uppercase}.bundle p{margin:4px 0 0;font:500 13px var(--sans);opacity:.8}.bundle a{background:#efe2c8;color:#161729;padding:12px 20px;font:700 11px var(--sans);letter-spacing:2px;text-transform:uppercase;text-decoration:none}
     .item{display:flex;flex-direction:column;gap:10px}
     .ph{aspect-ratio:4/5;background:linear-gradient(135deg,#e2d4b8,#d6c6a6);display:grid;place-items:center;color:#8a7c66;font:600 11px var(--sans);letter-spacing:2px;text-transform:uppercase;overflow:hidden}
@@ -66,7 +67,7 @@
       <span class="hw shop-sig" role="img" aria-label="Brianna Rae" style="--m:url(hw-sig.png);aspect-ratio:814/195"></span>
     </section>
     <section class="shop">
-      <div class="bundle"><div><b>Any 3 prints · $15</b><p>Pick any three 4×6 prints, and tell us which ones at checkout. Each print is a limited edition of 25.</p></div><a href="https://buy.stripe.com/4gMbJ1dRicYPeCDbmu08g03" target="_blank" rel="noopener">Build a bundle</a></div>
+      <div class="bundle"><div><b>Any 3 prints · $15</b><p>Pick any three 4×6 prints, and tell us which ones (by name) at checkout. Each print is a limited edition of 25.</p></div><a href="https://buy.stripe.com/4gMbJ1dRicYPeCDbmu08g03" target="_blank" rel="noopener">Build a bundle</a></div>
     <div class="shop-grid" id="grid"></div>
       <div class="how">
         <div><b>1. Pick a size</b>Choose 4×6, 5×7, or framed under the print you want.</div>
@@ -83,8 +84,9 @@
   <script>
     // Placeholder slots until Brianna sends the print photos. Add {title, img} entries to fill them in.
     // Ordered strongest first; titles number by position
-    const ORDER = [20,14,13,11,21,3,6,2,5,16,18,19,9,4,8,1,7,17,12,10,15];
-    const prints = ORDER.map((f, i) => ({ title: `No. ${String(i + 1).padStart(2, '0')}`, img: `print-${String(f).padStart(2, '0')}.webp` }));
+    const NAMES = {1: "Miss Magic", 2: "Timecrunch", 3: "Pardon", 4: "Sisterhood", 5: "Exist", 6: "The Starlet", 7: "Pride", 8: "Final Call", 9: "Somewhere Safer", 10: "Awestruck", 11: "I’ve Been Framed!", 12: "Pace Yourself", 13: "Day Job", 14: "Second Serving", 15: "Whim", 16: "Mission", 17: "Unbothered", 18: "Campaign", 19: "Yes You May", 20: "Razzle", 21: "The Garden", 22: "Ballad", 23: "Sun", 24: "Strike", 25: "Resolve", 26: "The Narrator"};
+    const ORDER = [20, 14, 13, 11, 21, 3, 6, 2, 24, 25, 26, 5, 16, 23, 18, 19, 9, 4, 22, 8, 1, 7, 17, 12, 10, 15];
+    const prints = ORDER.map((f, i) => ({ title: NAMES[f], no: String(i + 1).padStart(2, "0"), img: `print-${String(f).padStart(2, "0")}.webp` }));
     // Add print numbers here when a framed piece sells, e.g. ['03','11']
     const SOLD_FRAMED = [];
     const prices = { '4x6': 5, '5x7': 8, 'framed': 30 };
@@ -96,10 +98,10 @@
     prints.forEach((p, i) => {
       const id = `s${i}`;
       const el = document.createElement('article');
-      el.className = 'item'; const sold = SOLD_FRAMED.includes(String(i + 1).padStart(2, '0')); el.id = `p${String(i + 1).padStart(2, '0')}`;
+      el.className = 'item'; const sold = SOLD_FRAMED.includes(p.no); el.id = `p${p.no}`;
       el.innerHTML = `
         <div class="ph">${sold ? `<span class="sold-dot">Framed original sold</span>` : ""}${p.img ? `<button class="zoom" aria-label="Enlarge ${p.title}"><img src="${p.img}" alt="Print ${p.title} by Brianna Rae" ${i<4?'loading="eager"'+(i==0?' fetchpriority="high"':''):'loading="lazy"'} decoding="async" width="900" height="1125"></button>` : 'Coming soon'}</div>
-        <h2>${p.title}</h2>
+        <h2>${p.title}</h2><p class="no">No. ${p.no}</p>
         <p class="price">Edition of 25 · from $5</p>
         <div class="buyrow">
           <select class="sz" aria-label="Size for ${p.title}">
