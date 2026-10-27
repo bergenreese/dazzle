@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta property="og:title" content="DAZZLE — a photo gallery by Brianna Rae">
+  <meta property="og:description" content="Opening night November 1 · On view all November at Wild Tulips, Denver.">
+  <meta property="og:image" content="https://briannaraephoto.com/og.jpg">
+  <meta property="og:url" content="https://briannaraephoto.com/shop.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#161729">
+  <meta name="robots" content="noindex,nofollow">
+  <title>At the gallery — Brianna Rae</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600&family=Special+Elite&family=Caveat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=40">
+  <style>
+    .shop-hero{background:#161729;color:var(--cream);padding:44px 6% 38px}
+    .shop-hero .eyebrow{opacity:.8;margin-bottom:14px}
+    .shop-hero h1{font:800 clamp(52px,9vw,110px)/.9 var(--display);margin:0;letter-spacing:-1px}
+    .shop-hero p{max-width:46ch;font-size:14px;line-height:1.7;margin:16px 0 0;opacity:.9}
+    .shop-hero .sizes-line{font:700 15px var(--display);letter-spacing:2px;margin-top:18px;color:#f6e2bd}
+    .shop{padding:40px 6% 50px}
+    .shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:28px 22px;max-width:1150px;margin:0 auto}
+    .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}.item:hover .ph img{transform:scale(1.05)}
+    .size{flex-wrap:wrap}.size label.fr{flex-basis:100%}
+    .ph{position:relative}.sold-dot{position:absolute;top:10px;left:10px;z-index:2;background:#6b1a2b;color:#f7f3ea;font:700 10px var(--sans);letter-spacing:2px;text-transform:uppercase;padding:6px 10px}.sold-tag{flex-basis:100%;text-align:center;padding:9px;font:600 10px var(--sans);letter-spacing:2px;text-transform:uppercase;color:#6b1a2b;border:1px dashed #6b1a2b}
+.buyrow{display:flex;gap:8px}.buyrow .sz{flex:1;min-width:0;font:600 12px var(--sans);letter-spacing:.5px;padding:10px 8px;border:1px solid #16172966;background:#f8efdc;color:#161729;border-radius:0;-webkit-appearance:none;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#161729 50%),linear-gradient(135deg,#161729 50%,transparent 50%);background-position:calc(100% - 14px) 50%,calc(100% - 9px) 50%;background-size:5px 5px;background-repeat:no-repeat}.buyrow .buy{flex:none;width:auto;padding:10px 18px;margin:0}@media(max-width:750px){.buyrow{flex-direction:column}.buyrow .buy{text-align:center}}
+.ph{background:#1a1b2e}.zoom{all:unset;display:block;width:100%;height:100%;cursor:zoom-in}#lb{border:0;padding:16px;background:#161729;color:#efe2c8;max-width:94vw;max-height:94vh}#lb::backdrop{background:rgba(10,10,20,.85)}#lb img{display:block;max-width:88vw;max-height:80vh;margin:0 auto}#lb p{text-align:center;font:700 14px var(--display);letter-spacing:2px;margin:10px 0 0}#lb .close{background:none;border:0;color:#efe2c8;font:600 12px var(--sans);letter-spacing:2px;text-transform:uppercase;float:right;padding:10px;cursor:pointer}
+.buyrow .buy{font-weight:700;letter-spacing:2px;box-shadow:3px 3px 0 #525b8b;transition:transform .2s,box-shadow .2s}.buyrow .buy:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 #525b8b}.bundle a{font-weight:700;box-shadow:4px 4px 0 #525b8b;padding:14px 24px!important}
+.item .no{font:600 10px var(--sans);letter-spacing:2px;color:#8a8070;margin:-4px 0 0}
+    .bundle{max-width:1100px;margin:0 auto 40px;padding:22px 26px;background:#161729;color:#efe2c8;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}.bundle b{font:800 22px var(--display);letter-spacing:1px;text-transform:uppercase}.bundle p{margin:4px 0 0;font:500 13px var(--sans);opacity:.8}.bundle a{background:#efe2c8;color:#161729;padding:12px 20px;font:700 11px var(--sans);letter-spacing:2px;text-transform:uppercase;text-decoration:none}
+    .item{display:flex;flex-direction:column;gap:10px}
+    .ph{aspect-ratio:4/5;background:linear-gradient(135deg,#e2d4b8,#d6c6a6);display:grid;place-items:center;color:#8a7c66;font:600 11px var(--sans);letter-spacing:2px;text-transform:uppercase;overflow:hidden}
+    .ph img{width:100%;height:100%;object-fit:cover;display:block}
+    .item h2{font:700 19px var(--display);letter-spacing:1px;margin:2px 0 0;text-transform:uppercase}
+    .item .price{font:600 11px var(--sans);letter-spacing:1.5px;text-transform:uppercase;color:#665b51;margin:0}
+    .size{display:flex;gap:8px}
+    .size label{flex:1;position:relative;cursor:pointer}
+    .size input{position:absolute;opacity:0}
+    .size span{display:block;text-align:center;padding:9px 4px;border:1px solid #16172955;font:600 11px var(--sans);letter-spacing:1px}
+    .size input:checked+span{background:#161729;color:var(--cream);border-color:#161729}
+    .size input:focus-visible+span{outline:2px solid var(--red);outline-offset:2px}
+    .buy{display:block;text-align:center;background:#161729;color:var(--cream);padding:13px;font:600 11px var(--sans);letter-spacing:1.5px;text-transform:uppercase}
+    .buy:hover{background:#3a3f5e}
+    .buy[aria-disabled]{background:#cdbf9f;color:#5f5546;cursor:default}
+    .how{max-width:1150px;margin:40px auto 0;padding-top:24px;border-top:1px solid #29191925;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;font-size:13px;line-height:1.6}
+    .how b{display:block;font:700 15px var(--display);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+    .back{font:600 11px var(--sans);letter-spacing:1.5px;text-transform:uppercase}
+    @media(max-width:750px){.shop-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px 12px}.item h2{font-size:15px}.size span{padding:8px 2px;font-size:10px}.how{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <a class="wordmark" href="index.html">brianna rae<span>✳&#xFE0E;</span></a>
+    <nav class="top-actions" aria-label="Main">
+      <a class="top-link" href="index.html#book">Book a shoot</a>
+      <span class="dot" aria-hidden="true">✳&#xFE0E;</span>
+      <a class="top-link" href="shop.html">All prints</a>
+      <span class="dot" aria-hidden="true">✳&#xFE0E;</span>
+      <a class="top-link" href="index.html">Home</a>
+    </nav>
+  </header>
+  <main>
+    <section class="shop-hero">
+      <p class="eyebrow">DAZZLE · AT THE GALLERY</p>
+      <h1>You found the wall.</h1>
+      <p>Standing in front of one you love? Buy the framed original right here and pick it up at Wild Tulips when the residency closes, or order a smaller print shipped to you.</p>
+      <p class="sizes-line">4×6 · $5 &nbsp;&nbsp;/&nbsp;&nbsp; 5×7 · $8 &nbsp;&nbsp;/&nbsp;&nbsp; Framed original · $30</p>
+      <span class="hw shop-sig" role="img" aria-label="Brianna Rae" style="--m:url(hw-sig.png);aspect-ratio:814/195"></span>
+    </section>
+    <section class="shop">
+      <div class="bundle"><div><b>Any 3 prints · $15</b><p>Pick any three 4×6 prints, and tell us which ones (by name) at checkout. Each print is a limited edition of 25.</p></div><a href="https://buy.stripe.com/4gMbJ1dRicYPeCDbmu08g03" target="_blank" rel="noopener">Build a bundle</a></div>
+    <div class="shop-grid" id="grid"></div>
+      <div class="how">
+        <div><b>1. Pick one</b>Framed original to take home, or a 4×6 or 5×7 print shipped to you.</div>
+        <div><b>2. Check out</b>Pay securely by card, Apple Pay, or Google Pay.</div>
+        <div><b>3. We ship it</b>Add your shipping address at checkout. Brianna will email you a confirmation.</div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <span>BRIANNA RAE PHOTOGRAPHY © 2026 · Website by <a href="https://frontframestudio.com" target="_blank" rel="noopener" class="credit">FrontFrame Studio</a></span>
+    <a class="back" href="index.html">BACK TO THE GALLERY</a>
+  </footer>
+  <dialog id="lb"><button class="close" aria-label="Close">Close ×</button><img alt=""><p></p></dialog>
+  <script>
+    // Placeholder slots until Brianna sends the print photos. Add {title, img} entries to fill them in.
+    // Ordered strongest first; titles number by position
+    const NAMES = {1: "Miss Magic", 2: "Timecrunch", 3: "Pardon", 4: "Sisterhood", 5: "Exist", 6: "The Starlet", 7: "Pride", 8: "Final Call", 9: "Somewhere Safer", 10: "Awestruck", 11: "I’ve Been Framed!", 12: "Pace Yourself", 13: "Day Job", 14: "Second Serving", 15: "Whim", 16: "Mission", 17: "Unbothered", 18: "Campaign", 19: "Yes You May", 20: "Razzle", 21: "The Garden", 22: "Ballad", 23: "Sun", 24: "Strike", 25: "Resolve", 26: "The Narrator"};
+    const ORDER = [20, 14, 13, 11, 21, 3, 6, 2, 24, 25, 26, 5, 16, 23, 18, 19, 9, 4, 22, 8, 1, 7, 17, 12, 10, 15];
+    const prints = ORDER.map((f, i) => ({ title: NAMES[f], no: String(i + 1).padStart(2, "0"), img: `print-${String(f).padStart(2, "0")}.webp` }));
+    // Add print numbers here when a framed piece sells, e.g. ['03','11']
+    const SOLD_FRAMED = [];
+    const IN_PERSON = true;
+    const prices = { '4x6': 5, '5x7': 8, 'framed': 30 };
+    const grid = document.getElementById('grid');
+    const lb=document.getElementById('lb'),lbI=lb.querySelector('img'),lbP=lb.querySelector('p');lb.querySelector('.close').onclick=()=>lb.close();lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
+    // Stripe Payment Links: paste Brianna’s links here once she creates them.
+    const STRIPE = { '4x6': 'https://buy.stripe.com/dRmfZh00s0c31PRaiq08g00', '5x7': 'https://buy.stripe.com/4gMdR9aF6e2T8efaiq08g01', 'framed': 'https://buy.stripe.com/bJebJ100scYP7ab3U208g02' };
+    const checkout = (title, size) => STRIPE[size] ? `${STRIPE[size]}?client_reference_id=${encodeURIComponent(title.replace(/\s+/g,'-'))}` : '';
+    prints.forEach((p, i) => {
+      const id = `s${i}`;
+      const el = document.createElement('article');
+      el.className = 'item'; const sold = SOLD_FRAMED.includes(p.no); el.id = `p${p.no}`;
+      el.innerHTML = `
+        <div class="ph">${sold ? `<span class="sold-dot">Framed original sold</span>` : ""}${p.img ? `<button class="zoom" aria-label="Enlarge ${p.title}"><img src="${p.img}" alt="Print ${p.title} by Brianna Rae" ${i<4?'loading="eager"'+(i==0?' fetchpriority="high"':''):'loading="lazy"'} decoding="async" width="900" height="1125"></button>` : 'Coming soon'}</div>
+        <h2>${p.title}</h2><p class="no">No. ${p.no}</p>
+        <p class="price">Edition of 25 · from $5</p>
+        <div class="buyrow">
+          <select class="sz" aria-label="Size for ${p.title}">
+            <option value="4x6">4×6 print · shipped · $5</option>
+            <option value="5x7">5×7 print · shipped · $8</option>
+            ${sold ? '' : '<option value="framed" selected>Framed original · pick up · $30</option>'}
+          </select>
+          <a class="buy" target="_blank" rel="noopener">Buy</a>
+        </div>${sold ? '<p class="sold-tag">Framed original sold</p>' : ''}`;
+      const buy = el.querySelector('.buy');
+      const setBuy = size => {
+        const url = checkout(p.title, size);
+        if (url) { buy.href = url; buy.textContent = `Buy · $${prices[size]}`; buy.removeAttribute('aria-disabled'); }
+        else { buy.removeAttribute('href'); buy.textContent = 'Checkout opens soon'; buy.setAttribute('aria-disabled','true'); }
+      };
+      setBuy(IN_PERSON && !sold ? 'framed' : '4x6');
+      el.querySelector('.sz').addEventListener('change', e => setBuy(e.target.value));
+      el.querySelector('.zoom').onclick=()=>{lbI.src=p.img;lbP.textContent=p.title;lb.showModal()};
+      grid.appendChild(el);
+    });
+  </script>
+  <script data-goatcounter="https://briannarae.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
