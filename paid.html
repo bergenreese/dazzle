@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#161729">
+  <title>Payment check — Brianna Rae</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--ok:#1f8a4c;--bad:#b3261e;--wait:#3a3f5e;--cream:#f2e3c6;--ink:#161729}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100svh;font-family:'DM Sans',sans-serif;background:var(--wait);color:#fff;display:flex;flex-direction:column;transition:background .3s}
+    body.ok{background:var(--ok)} body.bad{background:var(--bad)} body.used{background:#8a5a00}
+    .top{padding:14px 18px;display:flex;justify-content:space-between;font:600 12px 'DM Sans';letter-spacing:2px;text-transform:uppercase;opacity:.9}
+    main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px 22px 30px;gap:10px}
+    .big{font:900 clamp(64px,22vw,140px)/.9 'Barlow Condensed',sans-serif;letter-spacing:2px}
+    .sub{font-size:18px;max-width:420px;line-height:1.4}
+    .card{background:rgba(0,0,0,.18);border-radius:14px;padding:16px 18px;width:min(420px,100%);text-align:left;font-size:16px;line-height:1.6;margin-top:6px}
+    .card b{font:800 26px 'Barlow Condensed',sans-serif;letter-spacing:1px;display:block;margin-bottom:4px}
+    .row{display:flex;justify-content:space-between;gap:12px}.row span:first-child{opacity:.75}
+    .live{display:flex;align-items:center;gap:8px;font:600 13px 'DM Sans';letter-spacing:1.5px;text-transform:uppercase;margin-top:6px}
+    .dot{width:10px;height:10px;border-radius:50%;background:#fff;animation:p 1s infinite}
+    @keyframes p{50%{opacity:.2;transform:scale(.6)}}
+    .bar{width:min(420px,100%);margin-top:14px;display:flex;gap:8px}
+    .bar input{flex:1;min-width:0;font:600 18px 'DM Sans';padding:14px;border:0;border-radius:10px;text-align:center;letter-spacing:4px}
+    .bar button{font:800 16px 'Barlow Condensed',sans-serif;letter-spacing:2px;padding:0 18px;border:0;border-radius:10px;background:var(--cream);color:var(--ink);cursor:pointer}
+    .small{font-size:13px;opacity:.8;max-width:420px}
+    a{color:inherit}
+  </style>
+</head>
+<body>
+  <div class="top"><span>briannaraephoto.com</span><span id="clock"></span></div>
+  <main id="m">
+    <div class="big">CHECKING…</div>
+    <p class="sub">Confirming this payment with Stripe.</p>
+  </main>
+<script>
+const $m=document.getElementById('m');
+const sid=new URLSearchParams(location.search).get('session_id')||'';
+const tick=()=>document.getElementById('clock').textContent=new Date().toLocaleTimeString([], {hour:'numeric',minute:'2-digit',second:'2-digit'});
+tick();setInterval(tick,1000);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=(a,c)=>a==null?'':(a/100).toLocaleString('en-US',{style:'currency',currency:(c||'usd').toUpperCase()});
+const when=t=>t?new Date(typeof t==='number'?t*1000:t).toLocaleString([], {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'';
+const REASON={bad_id:'This link is not a valid receipt.',not_found:'No payment with this receipt exists.',not_paid:'This checkout was not paid, or the payment was refunded.',not_configured:'Payment checking is not set up yet. Check the Stripe app instead.',stripe_error:'Could not reach Stripe. Check the Stripe app instead.',network:'No connection. Check the Stripe app instead.'};
+function render(r){
+  document.body.className='';
+  if(!r.verified){
+    document.body.classList.add('bad');
+    $m.innerHTML=`<div class="big">NOT VERIFIED</div><p class="sub">${esc(REASON[r.reason]||'This payment could not be confirmed.')}</p><p class="small">Do not hand over the print.</p>`;
+    return;
+  }
+  const used=!!r.picked_up_at;
+  document.body.classList.add(used?'used':'ok');
+  const items=(r.items||[]).map(i=>`${esc(i.name)}${i.qty>1?' × '+i.qty:''}`).join('<br>');
+  $m.innerHTML=`
+    <div class="big">${used?'ALREADY PICKED UP':'PAID'}</div>
+    ${r.livemode?'':'<p class="small"><b>TEST PAYMENT — not real money.</b></p>'}
+    <div class="card">
+      <b>${esc(r.print||'Dazzle print')}</b>
+      ${items}
+      <div class="row"><span>Amount</span><span>${money(r.amount,r.currency)}</span></div>
+      <div class="row"><span>Name</span><span>${esc(r.first_name||'—')}</span></div>
+      <div class="row"><span>Paid</span><span>${when(r.paid_at)}</span></div>
+      <div class="row"><span>Order</span><span>#${esc(r.order)}</span></div>
+      ${used?`<div class="row"><span>Picked up</span><span>${when(r.picked_up_at)}</span></div>`:''}
+    </div>
+    <div class="live"><span class="dot"></span>Live check · verified just now</div>
+    ${used?'<p class="small">This receipt was already used. Do not hand over another print.</p>':`
+    <form class="bar" id="f"><input id="pin" inputmode="numeric" autocomplete="off" placeholder="Bar PIN" aria-label="Bar PIN"><button>HANDED OVER</button></form>
+    <p class="small" id="msg">Bar staff: enter the PIN once you hand over the print.</p>`}`;
+  const f=document.getElementById('f');
+  if(f) f.onsubmit=async e=>{e.preventDefault();const msg=document.getElementById('msg');msg.textContent='Saving…';
+    try{const x=await (await fetch('/api/pickup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid,pin:document.getElementById('pin').value})})).json();
+      if(x.ok){load();} else msg.textContent={wrong_pin:'Wrong PIN.',already_picked_up:'Already picked up.',not_configured:'PIN not set up yet.'}[x.reason]||'Could not save. Try again.';
+    }catch{msg.textContent='No connection. Try again.'}};
+}
+async function load(){
+  try{const r=await (await fetch('/api/verify?session_id='+encodeURIComponent(sid),{cache:'no-store'})).json();render(r);}
+  catch{render({verified:false,reason:'network'});}
+}
+load();
+setInterval(()=>{ if(document.visibilityState==='visible') load(); },30000);
+</script>
+</body>
+</html>
