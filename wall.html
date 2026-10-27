@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta property="og:title" content="DAZZLE — a photo gallery by Brianna Rae">
-  <meta property="og:description" content="Opening night November 1 · On view all November at Wild Tulips, Denver.">
+  <meta property="og:description" content="Prints by Brianna Rae · Dazzle, on view at Wild Tulips, Denver, and available online.">
   <meta property="og:image" content="https://briannaraephoto.com/og.jpg">
   <meta property="og:url" content="https://briannaraephoto.com/shop.html">
   <meta property="og:type" content="website">
@@ -105,7 +105,7 @@
       el.className = 'item'; const sold = SOLD_FRAMED.includes(p.no); el.id = `p${p.no}`;
       el.innerHTML = `
         <div class="ph">${sold ? `<span class="sold-dot">Framed original sold</span>` : ""}${p.img ? `<button class="zoom" aria-label="Enlarge ${p.title}"><img src="${p.img}" alt="Print ${p.title} by Brianna Rae" ${i<4?'loading="eager"'+(i==0?' fetchpriority="high"':''):'loading="lazy"'} decoding="async" width="900" height="1125"></button>` : 'Coming soon'}</div>
-        <h2>${p.title}</h2><p class="no">No. ${p.no}</p>
+        <h2>${p.title}</h2>
         <p class="price">Edition of 25 · from $5</p>
         <div class="buyrow">
           <select class="sz" aria-label="Size for ${p.title}">
