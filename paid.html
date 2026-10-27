@@ -36,6 +36,7 @@
     <p class="sub">Confirming this payment with Stripe.</p>
   </main>
 <script>
+try{localStorage.removeItem("dz_bag_v1")}catch(e){}
 const $m=document.getElementById('m');
 const sid=new URLSearchParams(location.search).get('session_id')||'';
 const tick=()=>document.getElementById('clock').textContent=new Date().toLocaleTimeString([], {hour:'numeric',minute:'2-digit',second:'2-digit'});

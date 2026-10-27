@@ -68,7 +68,7 @@
       <span class="hw shop-sig" role="img" aria-label="Brianna Rae" style="--m:url(hw-sig.png);aspect-ratio:814/195"></span>
     </section>
     <section class="shop">
-      <div class="bundle"><div><b>Any 3 prints · $15</b><p>Pick any three 4×6 prints, and tell us which ones (by name) at checkout. Each print is a limited edition of 25.</p></div><a href="https://buy.stripe.com/4gMbJ1dRicYPeCDbmu08g03" target="_blank" rel="noopener">Build a bundle</a></div>
+      <div class="bundle"><div><b>Any 3 prints · $15</b><p>Tap Build a bundle, then pick any three 4×6 prints. Each print is a limited edition of 25.</p></div><a href="#" id="bundleBtn">Build a bundle</a></div>
     <div class="shop-grid" id="grid"></div>
       <div class="how">
         <div><b>1. Pick a size</b>Choose 4×6, 5×7, or framed under the print you want.</div>
@@ -119,16 +119,19 @@
         </div>${sold ? '<p class="sold-tag">Framed original sold</p>' : ''}`;
       const buy = el.querySelector('.buy');
       const setBuy = size => {
-        const url = checkout(p.title, size);
-        if (url) { buy.href = url; buy.textContent = `Buy · $${size==='framed' ? CARD[p.title][1] : prices[size]}`; buy.removeAttribute('aria-disabled'); }
-        else { buy.removeAttribute('href'); buy.textContent = (size==='framed' ? 'Framed: ask at the bar' : 'Checkout opens soon'); buy.setAttribute('aria-disabled','true'); }
+        const price = size==='framed' ? (CARD[p.title]||[])[1] : prices[size];
+        buy.removeAttribute('target'); buy.href = '#';
+        if (price) { Object.assign(buy.dataset,{title:p.title,size,price,img:p.img}); buy.textContent = `Add to bag · $${price}`; buy.removeAttribute('aria-disabled'); }
+        else { delete buy.dataset.size; buy.textContent = 'Framed: see title card'; buy.setAttribute('aria-disabled','true'); }
       };
       setBuy('4x6');
       el.querySelector('.sz').addEventListener('change', e => setBuy(e.target.value));
       el.querySelector('.zoom').onclick=()=>{lbI.src=p.img;lbP.textContent=p.title;lb.showModal()};
       grid.appendChild(el);
     });
+    window.DZ_PRINTS = prints;
   </script>
+  <script src="cart.js?v=1"></script>
   <script data-goatcounter="https://briannarae.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
