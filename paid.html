@@ -51,7 +51,7 @@ function render(r){
     $m.innerHTML=`<div class="big">NOT VERIFIED</div><p class="sub">${esc(REASON[r.reason]||'This payment could not be confirmed.')}</p><p class="small">Do not hand over the print.</p>`;
     return;
   }
-  const used=!!r.picked_up_at;
+  const used=false;
   document.body.classList.add(used?'used':'ok');
   const items=(r.items||[]).map(i=>`${esc(i.name)}${i.qty>1?' × '+i.qty:''}`).join('<br>');
   $m.innerHTML=`
@@ -67,14 +67,7 @@ function render(r){
       ${used?`<div class="row"><span>Picked up</span><span>${when(r.picked_up_at)}</span></div>`:''}
     </div>
     <div class="live"><span class="dot"></span>Live check · verified just now</div>
-    ${used?'<p class="small">This receipt was already used. Do not hand over another print.</p>':`
-    <form class="bar" id="f"><input id="pin" inputmode="numeric" autocomplete="off" placeholder="Bar PIN" aria-label="Bar PIN"><button>HANDED OVER</button></form>
-    <p class="small" id="msg">Bar staff: enter the PIN once you hand over the print.</p>`}`;
-  const f=document.getElementById('f');
-  if(f) f.onsubmit=async e=>{e.preventDefault();const msg=document.getElementById('msg');msg.textContent='Saving…';
-    try{const x=await (await fetch('/api/pickup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid,pin:document.getElementById('pin').value})})).json();
-      if(x.ok){load();} else msg.textContent={wrong_pin:'Wrong PIN.',already_picked_up:'Already picked up.',not_configured:'PIN not set up yet.'}[x.reason]||'Could not save. Try again.';
-    }catch{msg.textContent='No connection. Try again.'}};
+`;
 }
 async function load(){
   try{const r=await (await fetch('/api/verify?session_id='+encodeURIComponent(sid),{cache:'no-store'})).json();render(r);}
