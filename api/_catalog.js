@@ -130,5 +130,25 @@ module.exports = { SIZES: { '4x6': 500, '5x7': 800 }, BUNDLE: 1500, CATALOG: {
   "img": "print-26.webp",
   "framed": 2800,
   "card": "8×10"
+ },
+ "Day Job, Vol. 1": {
+  "img": "print-13.webp",
+  "framed": 5500,
+  "card": "16×20"
+ },
+ "Day Job, Vol. 2": {
+  "img": "print-13.webp",
+  "framed": 3500,
+  "card": "8×10"
+ },
+ "Second Serving, Vol. 1": {
+  "img": "print-14.webp",
+  "framed": 4500,
+  "card": "8×10"
+ },
+ "Second Serving, Vol. 2": {
+  "img": "print-14.webp",
+  "framed": 3500,
+  "card": "4×6"
  }
 } };
