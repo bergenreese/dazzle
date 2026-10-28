@@ -49,6 +49,20 @@
     .how b{display:block;font:700 15px var(--display);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
     .back{font:600 11px var(--sans);letter-spacing:1.5px;text-transform:uppercase}
     @media(max-width:750px){.shop-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px 12px}.item h2{font-size:15px}.size span{padding:8px 2px;font-size:10px}.how{grid-template-columns:1fr}}
+
+    .pay-hero{background:#161729;color:#efe2c8;padding:30px 6% 26px}
+    .pay-hero h1{font:800 clamp(30px,8vw,52px)/1 var(--display);text-transform:uppercase;letter-spacing:1px;margin:6px 0 16px}
+    .pay-steps{list-style:none;padding:0;margin:0 0 16px;display:grid;gap:8px}
+    .pay-steps li{display:flex;align-items:center;gap:12px;font:500 15px var(--sans)}
+    .pay-steps b{flex:none;width:28px;height:28px;border-radius:50%;background:#efe2c8;color:#161729;display:grid;place-items:center;font:800 13px var(--sans)}
+    .pay-steps em{font-style:normal;font-weight:700;color:#fff}
+    .find span{position:absolute;left:-9999px}
+    .find input{width:100%;box-sizing:border-box;padding:14px 16px;font:500 16px var(--sans);border:0;background:#f8efdc;color:#161729;border-radius:0}
+    .pay-note{font:500 12px var(--sans);opacity:.75;margin:12px 0 0;line-height:1.5}
+    .none{text-align:center;font:500 14px var(--sans);padding:20px}
+    .buy[data-direct]{background:#2d6a3f!important;box-shadow:3px 3px 0 #161729!important}
+    .pay-hero .eyebrow{color:#9fb0e8}
+    #grid .item[hidden]{display:none!important}
   </style>
 </head>
 <body>
@@ -63,20 +77,25 @@
     </nav>
   </header>
   <main>
-    <section class="shop-hero">
-      <p class="eyebrow">DAZZLE · AT THE GALLERY</p>
-      <h1>You found the wall.</h1>
-      <p>Standing in front of one you love? Buy the framed original right here and pick it up at Wild Tulips when the residency closes, or order a smaller print shipped to you.</p>
-      <p class="sizes-line">Unframed prints: 4×6 · $5 &nbsp;/&nbsp; 5×7 · $8 &nbsp;&nbsp;|&nbsp;&nbsp; Framed originals: priced by title card</p>
-      <span class="hw shop-sig" role="img" aria-label="Brianna Rae" style="--m:url(hw-sig.png);aspect-ratio:814/195"></span>
+    <section class="pay-hero">
+      <p class="eyebrow">DAZZLE · PAY FOR A PRINT</p>
+      <h1>Buying one off the wall?</h1>
+      <ol class="pay-steps">
+        <li><b>1</b>Find the title on its card below.</li>
+        <li><b>2</b>Tap <em>Pay</em> &amp; check out on your phone.</li>
+        <li><b>3</b>Show the bar your green <em>PAID</em> screen.</li>
+      </ol>
+      <label class="find"><span>Search a title</span><input id="find" type="search" placeholder="Type the title on the card…" autocomplete="off"></label>
+      <p class="pay-note">Card · Apple Pay · Google Pay · Cash App Pay · Klarna/Afterpay. Framed originals are picked up at Wild Tulips.</p>
     </section>
     <section class="shop">
-      <div class="bundle"><div><b>Any 3 prints · $15</b><p>Tap Build a bundle, then pick any three 4×6 prints. Each print is a limited edition of 25.</p></div><a href="#" id="bundleBtn">Build a bundle</a></div>
-    <div class="shop-grid" id="grid"></div>
+          <div class="shop-grid" id="grid"></div>
+      <p class="none" id="none" hidden>No print by that name. Check the spelling on the card.</p>
+      <div class="bundle"><div><b>Want smaller prints too? Any 3 · $15</b><p>Tap Build a bundle, then pick any three 4×6 prints. Each print is a limited edition of 25.</p></div><a href="#" id="bundleBtn">Build a bundle</a></div>
       <div class="how">
-        <div><b>1. Pick one</b>Framed original to take home, or a 4×6 or 5×7 print shipped to you.</div>
-        <div><b>2. Check out</b>Pay securely by card, Apple Pay, or Google Pay.</div>
-        <div><b>3. We ship it</b>Add your shipping address at checkout. Brianna will email you a confirmation.</div>
+        <div><b>Framed originals</b>Pay here, then show the bar your PAID screen. Pick up at Wild Tulips.</div>
+        <div><b>Unframed prints</b>4×6 $5 or 5×7 $8, shipped to you. Use the menu on any print.</div>
+        <div><b>Questions?</b>Ask the bar. Every sale is confirmed live with Stripe.</div>
       </div>
     </section>
   </main>
@@ -112,12 +131,12 @@
       el.innerHTML = `
         <div class="ph">${sold ? `<span class="sold-dot">Framed original sold</span>` : ""}${p.img ? `<button class="zoom" aria-label="Enlarge ${p.title}"><img src="${p.img}" alt="Print ${p.title} by Brianna Rae" ${i<4?'loading="eager"'+(i==0?' fetchpriority="high"':''):'loading="lazy"'} decoding="async" width="900" height="1125"></button>` : 'Coming soon'}</div>
         <h2>${p.title}</h2>
-        <p class="price">Edition of 25 · from $5</p>
+        <p class="price">${CARD[p.title] ? `Framed original · ${CARD[p.title][0]} · $${CARD[p.title][1]}` : "Framed original · see title card"}</p>
         <div class="buyrow">
           <select class="sz" aria-label="Size for ${p.title}">
             <option value="4x6">4×6 print · shipped · $5</option>
             <option value="5x7">5×7 print · shipped · $8</option>
-            ${sold ? '' : `<option value="framed" selected>${CARD[p.title] ? `Framed original · ${CARD[p.title][0]} · pick up · $${CARD[p.title][1]}` : 'Framed original · see title card'}</option>`}
+            ${sold ? '' : `<option value="framed" selected>${CARD[p.title] ? `Framed ${CARD[p.title][0]} · $${CARD[p.title][1]}` : 'Framed original · see title card'}</option>`}
           </select>
           <a class="buy" target="_blank" rel="noopener">Buy</a>
         </div>${sold ? '<p class="sold-tag">Framed original sold</p>' : ''}`;
@@ -125,7 +144,7 @@
       const setBuy = size => {
         const price = size==='framed' ? (CARD[p.title]||[])[1] : prices[size];
         buy.removeAttribute('target'); buy.href = '#';
-        if (price) { Object.assign(buy.dataset,{title:p.title,size,price,img:p.img}); buy.textContent = `Add to bag · $${price}`; buy.removeAttribute('aria-disabled'); }
+        if (price) { Object.assign(buy.dataset,{title:p.title,size,price,img:p.img}); if(size==='framed'){buy.dataset.direct='1';buy.textContent=`Pay $${price} · take it home`;}else{delete buy.dataset.direct;buy.textContent=`Add to bag · $${price}`;} buy.removeAttribute('aria-disabled'); }
         else { delete buy.dataset.size; buy.textContent = 'Framed: see title card'; buy.setAttribute('aria-disabled','true'); }
       };
       setBuy(IN_PERSON && !sold ? 'framed' : '4x6');
@@ -134,8 +153,10 @@
       grid.appendChild(el);
     });
     window.DZ_PRINTS = prints;
+    const find=document.getElementById('find'),none=document.getElementById('none');
+    find.addEventListener('input',()=>{const q=find.value.trim().toLowerCase().replace(/[’']/g,'');let n=0;document.querySelectorAll('#grid .item').forEach(it=>{const t=it.querySelector('h2').textContent.toLowerCase().replace(/[’']/g,'');const m=!q||t.includes(q);it.hidden=!m;if(m)n++});none.hidden=n>0});
   </script>
-  <script src="cart.js?v=1"></script>
+  <script src="cart.js?v=2"></script>
   <script data-goatcounter="https://briannarae.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

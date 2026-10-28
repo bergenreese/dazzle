@@ -105,6 +105,7 @@
     const b = e.target.closest('.buy'); if (!b) return;
     e.preventDefault();
     if (!b.dataset.size) return;
+    if (b.dataset.direct) { payNow(b, [{ k: 'print', title: b.dataset.title, size: b.dataset.size, qty: 1 }]); return; }
     const { title, size, img } = b.dataset, price = +b.dataset.price;
     if (size === 'framed' && bag.some(l => l.title === title && l.size === 'framed')) { toast('That original is already in your bag'); open(); return; }
     const hit = bag.find(l => l.k === 'print' && l.title === title && l.size === size);
@@ -161,6 +162,17 @@
       throw new Error(d.error === 'not_configured' ? 'Online checkout opens very soon. In the gallery? Pay at the bar.' : (d.message || 'Checkout could not start. Please try again.'));
     } catch (e) { err.textContent = e.message; err.hidden = false; go.disabled = false; go.textContent = 'Checkout'; }
   };
+
+  async function payNow(btn, lines) {
+    const old = btn.textContent; btn.textContent = 'Opening secure checkout…'; btn.setAttribute('aria-busy', 'true');
+    try {
+      const r = await fetch('/api/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ lines, from: 'wall' }) });
+      const d = await r.json();
+      if (d.url) { location.href = d.url; return; }
+      toast(d.message || 'Checkout could not start. Please try again.');
+    } catch (e) { toast('Checkout could not start. Please try again.'); }
+    btn.textContent = old; btn.removeAttribute('aria-busy');
+  }
 
   // Came back from a cancelled checkout: reopen the bag. Paid: clear it.
   const q = new URLSearchParams(location.search);
