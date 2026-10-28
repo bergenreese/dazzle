@@ -183,8 +183,10 @@
     window.DZ_PRINTS = prints;
 
     function venmoPay(title, price){
-      const note=`Dazzle · ${title} (framed original)`;
-      const url=`https://venmo.com/${encodeURIComponent(VENMO)}?txn=pay&amount=${price}&note=${encodeURIComponent(note)}`;
+      const note=`Dazzle - ${title} (framed)`;
+      const mobile=/iPhone|iPad|Android/i.test(navigator.userAgent);
+      // App deep link keeps spaces as spaces; the web link turns them into "+".
+      const url=mobile?`venmo://paycharge?txn=pay&recipients=${encodeURIComponent(VENMO)}&amount=${price}&note=${encodeURIComponent(note)}`:`https://venmo.com/${encodeURIComponent(VENMO)}?txn=pay&amount=${price}&note=${encodeURIComponent(note)}`;
       const d=document.getElementById('vmo');
       d.querySelector('.vm-amt').textContent=`$${price}`;d.querySelector('.vm-to').textContent='@'+VENMO;d.querySelector('.vm-to2').textContent='@'+VENMO;d.querySelector('.vm-note').textContent=note;
       d.querySelector('.vm-open').href=url;d.showModal();
