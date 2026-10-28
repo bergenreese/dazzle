@@ -87,7 +87,7 @@
     // Ordered strongest first; titles number by position
     const NAMES = {1: "Miss Magic", 2: "Timecrunch", 3: "Pardon", 4: "Sisterhood", 5: "Exist", 6: "The Starlet", 7: "Pride", 8: "Final Call", 9: "Somewhere Safer", 10: "Awestruck", 11: "I’ve Been Framed!", 12: "Pace Yourself", 13: "Day Job", 14: "Second Serving", 15: "Whim", 16: "Mission", 17: "Unbothered", 18: "Campaign", 19: "Yes You May", 20: "Razzle", 21: "The Garden", 22: "Ballad", 23: "Sun", 24: "Strike", 25: "Resolve", 26: "The Narrator"};
     const ORDER = [20, 14, 13, 11, 21, 3, 6, 2, 24, 25, 26, 5, 16, 23, 18, 19, 9, 4, 22, 8, 1, 7, 17, 12, 10, 15];
-    const prints = ORDER.map((f, i) => ({ title: NAMES[f], no: String(i + 1).padStart(2, "0"), img: `print-${String(f).padStart(2, "0")}.webp` })).flatMap(p => p.title==='Day Job'||p.title==='Second Serving' ? [1,2].map(v=>({...p,title:`${p.title}, Vol. ${v}`,no:p.no+'-'+v})) : [p]);
+    const prints = ORDER.map((f, i) => ({ title: NAMES[f], no: String(i + 1).padStart(2, "0"), img: `print-${String(f).padStart(2, "0")}.webp` }));
     // Add print numbers here when a framed piece sells, e.g. ['03','11']
     const SOLD_FRAMED = [];
     const prices = { '4x6': 5, '5x7': 8 };
@@ -113,15 +113,16 @@
           <select class="sz" aria-label="Size for ${p.title}">
             <option value="4x6">4×6 · $5</option>
             <option value="5x7">5×7 · $8</option>
-            ${sold ? '' : `<option value="framed">${CARD[p.title] ? `Framed original · ${CARD[p.title][0]} · pick up · $${CARD[p.title][1]}` : 'Framed original · see title card'}</option>`}
+            ${sold ? '' : (CARD[p.title+', Vol. 1'] ? [1,2].map(v=>{const t=`${p.title}, Vol. ${v}`;return `<option value="framed|${t}">Framed Vol. ${v} · ${CARD[t][0]} · pick up · $${CARD[t][1]}</option>`}).join('') : `<option value="framed">${CARD[p.title] ? `Framed original · ${CARD[p.title][0]} · pick up · $${CARD[p.title][1]}` : 'Framed original · see title card'}</option>`)}
           </select>
           <a class="buy" target="_blank" rel="noopener">Buy</a>
         </div>${sold ? '<p class="sold-tag">Framed original sold</p>' : ''}`;
       const buy = el.querySelector('.buy');
       const setBuy = size => {
-        const price = size==='framed' ? (CARD[p.title]||[])[1] : prices[size];
+        let t = p.title; if (size.startsWith('framed|')) { t = size.slice(7); size = 'framed'; }
+        const price = size==='framed' ? (CARD[t]||[])[1] : prices[size];
         buy.removeAttribute('target'); buy.href = '#';
-        if (price) { Object.assign(buy.dataset,{title:p.title,size,price,img:p.img}); buy.textContent = `Add to bag · $${price}`; buy.removeAttribute('aria-disabled'); }
+        if (price) { Object.assign(buy.dataset,{title:t,size,price,img:p.img}); buy.textContent = `Add to bag · $${price}`; buy.removeAttribute('aria-disabled'); }
         else { delete buy.dataset.size; buy.textContent = 'Framed: see title card'; buy.setAttribute('aria-disabled','true'); }
       };
       setBuy('4x6');
