@@ -128,14 +128,14 @@
     // Ordered strongest first; titles number by position
     const NAMES = {1: "Miss Magic", 2: "Timecrunch", 3: "Pardon", 4: "Sisterhood", 5: "Exist", 6: "The Starlet", 7: "Pride", 8: "Final Call", 9: "Somewhere Safer", 10: "Awestruck", 11: "I’ve Been Framed!", 12: "Pace Yourself", 13: "Day Job", 14: "Second Serving", 15: "Whim", 16: "Mission", 17: "Unbothered", 18: "Campaign", 19: "Yes You May", 20: "Razzle", 21: "The Garden", 22: "Ballad", 23: "Sun", 24: "Strike", 25: "Resolve", 26: "The Narrator"};
     const ORDER = [20, 14, 13, 11, 21, 3, 6, 2, 24, 25, 26, 5, 16, 23, 18, 19, 9, 4, 22, 8, 1, 7, 17, 12, 10, 15];
-    const prints = ORDER.map((f, i) => ({ title: NAMES[f], no: String(i + 1).padStart(2, "0"), img: `print-${String(f).padStart(2, "0")}.webp` }));
+    const prints = ORDER.map((f, i) => ({ title: NAMES[f], no: String(i + 1).padStart(2, "0"), img: `print-${String(f).padStart(2, "0")}.webp` })).flatMap(p => p.title==='Day Job'||p.title==='Second Serving' ? [1,2].map(v=>({...p,title:`${p.title}, Vol. ${v}`,no:p.no+'-'+v})) : [p]);
     // Add print numbers here when a framed piece sells, e.g. ['03','11']
     const SOLD_FRAMED = [];
     const IN_PERSON = true;
     // Bri's Venmo username (no @). Leave empty to hide the Venmo option.
     const VENMO = 'BriannaRaePhotography';
     const prices = { '4x6': 5, '5x7': 8 };
-    const CARD = {"Awestruck":["4×6",25],"Ballad":["4×6",11],"Campaign":["8×10",35],"Exist":["4×6",8],"I’ve Been Framed!":["16×20",135],"Sun":["4×6",8],"Miss Magic":["4×6",7],"Mission":["5×7",22],"Pace Yourself":["8×10",35],"Pardon":["4×6",10],"Pride":["4×6",10],"Razzle":["8×10",25],"Resolve":["4×6",11],"Sisterhood":["5×7",30],"Somewhere Safer":["5×7",25],"Strike":["4×6",25],"The Garden":["4×6",14],"The Narrator":["8×10",28],"The Starlet":["11×14",130],"Timecrunch":["8×10",25],"Unbothered":["8×10",38],"Whim":["5×7",25],"Yes You May":["4×6",15],"Final Call":["5×7",15]};
+    const CARD = {"Day Job, Vol. 1":["16×20",55],"Day Job, Vol. 2":["8×10",35],"Second Serving, Vol. 1":["8×10",45],"Second Serving, Vol. 2":["4×6",35],"Awestruck":["4×6",25],"Ballad":["4×6",11],"Campaign":["8×10",35],"Exist":["4×6",8],"I’ve Been Framed!":["16×20",135],"Sun":["4×6",8],"Miss Magic":["4×6",7],"Mission":["5×7",22],"Pace Yourself":["8×10",35],"Pardon":["4×6",10],"Pride":["4×6",10],"Razzle":["8×10",25],"Resolve":["4×6",11],"Sisterhood":["5×7",30],"Somewhere Safer":["5×7",25],"Strike":["4×6",25],"The Garden":["4×6",14],"The Narrator":["8×10",28],"The Starlet":["11×14",130],"Timecrunch":["8×10",25],"Unbothered":["8×10",38],"Whim":["5×7",25],"Yes You May":["4×6",15],"Final Call":["5×7",15]};
     // Day Job and Second Serving each have a Vol. 1 and Vol. 2 on the title cards; framed price pending which volume is which.
     // Per-print framed Stripe links (price = title card): add {"Title":"https://buy.stripe.com/..."} once created.
     const FRAMED_LINKS = {};
@@ -185,7 +185,10 @@
       d.querySelector('.vm-open').href=url;d.showModal();
     }
     const find=document.getElementById('find'),none=document.getElementById('none');
-    const hint=document.getElementById('hint');const filt=()=>{const q=find.value.trim().toLowerCase().replace(/[’'!.,]/g,'');let n=0;document.querySelectorAll('#grid .item').forEach(it=>{const t=it.querySelector('h2').textContent.toLowerCase().replace(/[’'!.,]/g,'');const m=q.length>0&&t.includes(q);it.hidden=!m;if(m)n++});hint.hidden=q.length>0;none.hidden=!q||n>0;};find.addEventListener('input',filt);filt();
+    const hint=document.getElementById('hint');const filt=()=>{const q=find.value.trim().toLowerCase().replace(/[’'!.,]/g,'');let n=0;document.querySelectorAll('#grid .item').forEach(it=>{const t=it.querySelector('h2').textContent.toLowerCase().replace(/[’'!.,]/g,'');const m=q.length>0&&t.includes(q);it.hidden=!m;if(m)n++});hint.hidden=q.length>0;none.hidden=!q||n>0;};find.addEventListener('input',filt);
+    const slug=t=>t.toLowerCase().replace(/[’']/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+    const want=new URLSearchParams(location.search).get('p');
+    if(want){const hit=prints.find(x=>slug(x.title)===want);if(hit){find.value=hit.title;document.querySelectorAll('#grid .item').forEach(it=>{it.hidden=slug(it.querySelector('h2').textContent)!==want});hint.hidden=true;none.hidden=true;}else filt();}else filt();
   </script>
   <script src="cart.js?v=3"></script>
   <script data-goatcounter="https://briannarae.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
