@@ -95,7 +95,7 @@
       <ol class="pay-steps">
         <li><b>1</b>Type the title from the card by the print.</li>
         <li><b>2</b>Tap <em>Pay</em> &amp; check out on your phone.</li>
-        <li><b>3</b>Show the bar your green <em>PAID</em> screen.</li>
+        <li><b>3</b>Show an employee your green <em>PAID</em> screen.</li>
       </ol>
       <label class="find"><span>Search a title</span><input id="find" type="search" placeholder="Type the title on the card…" autocomplete="off"></label>
       <p class="pay-note">Card · Apple Pay · Google Pay · Cash App Pay · Klarna/Afterpay. Framed originals are picked up at Wild Tulips.</p>
@@ -106,9 +106,9 @@
       <p class="none" id="none" hidden>No print by that name. Check the spelling on the card.</p>
       <div class="bundle"><div><b>Want smaller prints too? Any 3 · $15</b><p>Tap Build a bundle, then pick any three 4×6 prints. Each print is a limited edition of 25.</p></div><a href="#" id="bundleBtn">Build a bundle</a></div>
       <div class="how">
-        <div><b>Framed originals</b>Pay here, then show the bar your PAID screen. Pick up at Wild Tulips.</div>
+        <div><b>Framed originals</b>Pay here, then show an employee your PAID screen. Pick up at Wild Tulips.</div>
         <div><b>Unframed prints</b>4×6 $5 or 5×7 $8, shipped to you. Use the menu on any print.</div>
-        <div><b>Questions?</b>Ask the bar. Every sale is confirmed live with Stripe.</div>
+        <div><b>Questions?</b>Ask an employee. Every sale is confirmed live with Stripe.</div>
       </div>
     </section>
   </main>
@@ -120,7 +120,7 @@
     <p class="vm-big"><span class="vm-amt"></span> to <b class="vm-to"></b></p>
     <p class="vm-n">Note: <span class="vm-note"></span></p>
     <a class="vm-open" href="#">Open Venmo</a>
-    <ol><li>Venmo opens with the amount and note filled in. Just tap <b>Pay</b>.</li><li>Show the bar your Venmo payment screen (to <b class="vm-to2">Bri</b>, same amount).</li></ol>
+    <ol><li>Venmo opens with the amount and note filled in. Just tap <b>Pay</b>.</li><li>Show an employee your Venmo payment screen (to <b class="vm-to2">Bri</b>, same amount).</li></ol>
     <button type="button" class="vm-x" onclick="this.closest('dialog').close()">Close</button></dialog>
   <dialog id="lb"><button class="close" aria-label="Close">Close ×</button><img alt=""><p></p></dialog>
   <script>
@@ -187,7 +187,7 @@
     const find=document.getElementById('find'),none=document.getElementById('none');
     const hint=document.getElementById('hint');const filt=()=>{const q=find.value.trim().toLowerCase().replace(/[’'!.,]/g,'');let n=0;document.querySelectorAll('#grid .item').forEach(it=>{const t=it.querySelector('h2').textContent.toLowerCase().replace(/[’'!.,]/g,'');const m=q.length>0&&t.includes(q);it.hidden=!m;if(m)n++});hint.hidden=q.length>0;none.hidden=!q||n>0;};find.addEventListener('input',filt);filt();
   </script>
-  <script src="cart.js?v=2"></script>
+  <script src="cart.js?v=3"></script>
   <script data-goatcounter="https://briannarae.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

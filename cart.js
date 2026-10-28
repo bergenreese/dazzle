@@ -159,7 +159,7 @@
         body: JSON.stringify({ lines: bag.map(l => l.k === 'bundle' ? { k: 'bundle', titles: l.titles } : { k: 'print', title: l.title, size: l.size, qty: l.qty }), from: location.pathname.includes('wall') ? 'wall' : 'shop' }) });
       const d = await r.json();
       if (d.url) { location.href = d.url; return; }
-      throw new Error(d.error === 'not_configured' ? 'Online checkout opens very soon. In the gallery? Pay at the bar.' : (d.message || 'Checkout could not start. Please try again.'));
+      throw new Error(d.error === 'not_configured' ? 'Online checkout opens very soon. In the gallery? Ask an employee.' : (d.message || 'Checkout could not start. Please try again.'));
     } catch (e) { err.textContent = e.message; err.hidden = false; go.disabled = false; go.textContent = 'Checkout'; }
   };
 
