@@ -63,6 +63,13 @@
     .buy[data-direct]{background:#2d6a3f!important;box-shadow:3px 3px 0 #161729!important}
     .pay-hero .eyebrow{color:#9fb0e8}
     #grid .item[hidden]{display:none!important}
+
+    .venmo{display:block;width:100%;margin-top:8px;background:none;border:1px solid #008CFF66;color:#0b4f8a;font:600 12px var(--sans);letter-spacing:1px;padding:10px;cursor:pointer}
+    .venmo b{color:#008CFF}
+    .vmo{border:0;padding:24px;max-width:340px;width:90vw;background:#f8efdc;color:#161729}.vmo::backdrop{background:rgba(10,10,20,.7)}
+    .vmo h3{margin:0 0 10px;font:800 22px var(--display);text-transform:uppercase}.vm-big{font:700 20px var(--sans);margin:0 0 4px}.vm-n{font:500 12px var(--sans);opacity:.75;margin:0 0 16px}
+    .vm-open{display:block;text-align:center;background:#008CFF;color:#fff;padding:15px;font:700 13px var(--sans);letter-spacing:2px;text-transform:uppercase;text-decoration:none}
+    .vmo ol{font:500 13px var(--sans);padding-left:18px;line-height:1.5}.vm-x{background:none;border:0;font:600 11px var(--sans);letter-spacing:2px;text-transform:uppercase;cursor:pointer;color:#161729}
   </style>
 </head>
 <body>
@@ -103,6 +110,12 @@
     <span>BRIANNA RAE PHOTOGRAPHY © 2026 · Website by <a href="https://frontframestudio.com" target="_blank" rel="noopener" class="credit">FrontFrame Studio</a></span>
     <a class="back" href="index.html">BACK TO THE GALLERY</a>
   </footer>
+  <dialog id="vmo" class="vmo"><h3>Pay with Venmo</h3>
+    <p class="vm-big"><span class="vm-amt"></span> to <b class="vm-to"></b></p>
+    <p class="vm-n">Note: <span class="vm-note"></span></p>
+    <a class="vm-open" href="#">Open Venmo</a>
+    <ol><li>Venmo opens with the amount and note filled in. Just tap <b>Pay</b>.</li><li>Show the bar your Venmo payment screen (to <b class="vm-to2">Bri</b>, same amount).</li></ol>
+    <button type="button" class="vm-x" onclick="this.closest('dialog').close()">Close</button></dialog>
   <dialog id="lb"><button class="close" aria-label="Close">Close ×</button><img alt=""><p></p></dialog>
   <script>
     // Placeholder slots until Brianna sends the print photos. Add {title, img} entries to fill them in.
@@ -113,6 +126,8 @@
     // Add print numbers here when a framed piece sells, e.g. ['03','11']
     const SOLD_FRAMED = [];
     const IN_PERSON = true;
+    // Bri's Venmo username (no @). Leave empty to hide the Venmo option.
+    const VENMO = '';
     const prices = { '4x6': 5, '5x7': 8 };
     const CARD = {"Awestruck":["4×6",25],"Ballad":["4×6",11],"Campaign":["8×10",35],"Exist":["4×6",8],"I’ve Been Framed!":["16×20",135],"Sun":["4×6",8],"Miss Magic":["4×6",7],"Mission":["5×7",22],"Pace Yourself":["8×10",35],"Pardon":["4×6",10],"Pride":["4×6",10],"Razzle":["8×10",25],"Resolve":["4×6",11],"Sisterhood":["5×7",30],"Somewhere Safer":["5×7",25],"Strike":["4×6",25],"The Garden":["4×6",14],"The Narrator":["8×10",28],"The Starlet":["11×14",130],"Timecrunch":["8×10",25],"Unbothered":["8×10",38],"Whim":["5×7",25],"Yes You May":["4×6",15],"Final Call":["5×7",15]};
     // Day Job and Second Serving each have a Vol. 1 and Vol. 2 on the title cards; framed price pending which volume is which.
@@ -139,13 +154,15 @@
             ${sold ? '' : `<option value="framed" selected>${CARD[p.title] ? `Framed ${CARD[p.title][0]} · $${CARD[p.title][1]}` : 'Framed original · see title card'}</option>`}
           </select>
           <a class="buy" target="_blank" rel="noopener">Buy</a>
-        </div>${sold ? '<p class="sold-tag">Framed original sold</p>' : ''}`;
-      const buy = el.querySelector('.buy');
+        </div>
+        <button type="button" class="venmo" hidden>or pay with <b>Venmo</b></button>${sold ? '<p class="sold-tag">Framed original sold</p>' : ''}`;
+      const buy = el.querySelector('.buy'); const vm = el.querySelector('.venmo'); vm.onclick=()=>venmoPay(p.title, vm.dataset.price);
       const setBuy = size => {
         const price = size==='framed' ? (CARD[p.title]||[])[1] : prices[size];
         buy.removeAttribute('target'); buy.href = '#';
         if (price) { Object.assign(buy.dataset,{title:p.title,size,price,img:p.img}); if(size==='framed'){buy.dataset.direct='1';buy.textContent=`Pay $${price} · take it home`;}else{delete buy.dataset.direct;buy.textContent=`Add to bag · $${price}`;} buy.removeAttribute('aria-disabled'); }
         else { delete buy.dataset.size; buy.textContent = 'Framed: see title card'; buy.setAttribute('aria-disabled','true'); }
+        vm.hidden=!(VENMO&&size==='framed'&&price);vm.dataset.price=price||'';
       };
       setBuy(IN_PERSON && !sold ? 'framed' : '4x6');
       el.querySelector('.sz').addEventListener('change', e => setBuy(e.target.value));
@@ -153,6 +170,14 @@
       grid.appendChild(el);
     });
     window.DZ_PRINTS = prints;
+
+    function venmoPay(title, price){
+      const note=`Dazzle · ${title} (framed original)`;
+      const url=`https://venmo.com/${encodeURIComponent(VENMO)}?txn=pay&amount=${price}&note=${encodeURIComponent(note)}`;
+      const d=document.getElementById('vmo');
+      d.querySelector('.vm-amt').textContent=`$${price}`;d.querySelector('.vm-to').textContent='@'+VENMO;d.querySelector('.vm-to2').textContent='@'+VENMO;d.querySelector('.vm-note').textContent=note;
+      d.querySelector('.vm-open').href=url;d.showModal();
+    }
     const find=document.getElementById('find'),none=document.getElementById('none');
     find.addEventListener('input',()=>{const q=find.value.trim().toLowerCase().replace(/[’']/g,'');let n=0;document.querySelectorAll('#grid .item').forEach(it=>{const t=it.querySelector('h2').textContent.toLowerCase().replace(/[’']/g,'');const m=!q||t.includes(q);it.hidden=!m;if(m)n++});none.hidden=n>0});
   </script>
